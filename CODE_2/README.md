@@ -4,7 +4,7 @@
 # Data for this project is originally sourced from Wang et al. (2017) https://doi.org/10.5194/acp-17-7529-2017
 # The aim of this project is to improve the performance and accuracy of the original source code that applies machine learning methods on the data set sourced from Wang et al. (2017)
 # This project is guided and supervised by Prof. Patrick Rinke and Dr. Hilda Sandström from Aalto University, Department of Applied Physics, CEST group
-# usage of code: run_main.py
+# Usage of code: run_main.py
 # All data files are stored in 'data' folder
 # All model python scripts are stored in 'model_scripts' folder
 # 'main' folder contains run_main.py and auxiliary scripts for running run_main.py
