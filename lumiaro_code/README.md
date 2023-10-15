@@ -1,0 +1,2 @@
+# This folder and all of it's content is produced by Aalto University, Department of Applied Physics, CEST group, authors Lumiaro et al., (2021) https://doi.org/10.5194/acp-21-13227-2021 and the original data set that it uses is sourced from Wang et al. (2017) https://doi.org/10.5194/acp-17-7529-20172
+# The purpose of this folder is to be a reference to compare the performances of both codes.
