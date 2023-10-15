@@ -10,10 +10,10 @@ def main():
     ###############
     t_0 = time.time_ns() # store starting time of the whole script
     scaling = 1_000_000 # used for conversions of powers of 10
-    # run precomputations before benchmarking
-    # loading the models etc
+
+    # run precomputations before benchmarking, loading the models etc
     generate_cm_edited.main()
-    generate_mbtr_edited.main()
+    generate_mbtr_edited.main(2)
     #generate_MACCS_edited.main()
     #generate_Morgan_edited.main()
     #generate_topological_edited.main()
