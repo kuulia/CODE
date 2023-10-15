@@ -6,5 +6,6 @@
 # This project is guided and supervised by Prof. Patrick Rinke and Dr. Hilda Sandström from Aalto University, Department of Applied Physics, CEST group
 # Usage of code: run_main.py
 # All data files are stored in 'data' folder
-# All model python scripts are stored in 'model_scripts' folder
-# 'main' folder contains run_main.py and auxiliary scripts for running run_main.py
+# All model python scripts are stored in 'model_scripts' folder and are accessible as an importable package.
+# funs.py stores auxiliary functions for the run_main.py
+# testing.py is for various sanity checks and may be ignored
