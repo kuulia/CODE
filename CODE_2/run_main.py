@@ -1,4 +1,3 @@
-import subprocess as sp
 import os, sys, time
 from model_scripts import *
 import numpy as np
@@ -13,9 +12,9 @@ def main():
     # run precomputations before benchmarking, loading the models etc
     generate_cm_edited.main()
     generate_mbtr_edited.main(2)
-    #generate_MACCS_edited.main()
-    #generate_Morgan_edited.main()
-    #generate_topological_edited.main()
+    generate_MACCS_edited.main()
+    generate_Morgan_edited.main()
+    generate_topological_edited.main()
 
     ###############
     t_0_lumiaro = time.time_ns() # store the starting time of executing main
