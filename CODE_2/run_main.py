@@ -1,6 +1,5 @@
 import subprocess as sp
-import time
-import os, sys
+import os, sys, time
 from model_scripts import *
 import numpy as np
 from funs import * # see module funs.py
@@ -33,7 +32,7 @@ def main():
     ###############
     t_0_improved = time.time_ns()
 
-    #run improved codetime.time_ns()
+    # run improved code
     n=10_000
     arr2 = np.zeros((n,1))
     for i in range(0,n):

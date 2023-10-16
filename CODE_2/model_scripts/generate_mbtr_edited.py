@@ -50,6 +50,7 @@ def main(k):
 			periodic=False,
 			geometry = {"function": "atomic_number"},
 			grid = {"min": 0, "max": 1, 'n': 100, 'sigma': 0.1},
+			weighting = {"function": "exp", "scale": 1.2, "threshold": 1e-3},
 			sparse=False
 		)
 	if (k == 2):
