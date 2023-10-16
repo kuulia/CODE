@@ -25,7 +25,9 @@ def main():
     arr = np.zeros((n,1))
     for i in range(0,n):
         arr[i] = i * (i+1)
-    
+    ###############
+    #compute test error values
+    ###############
     t_end_lumiaro = time.time_ns() # store the end time of lumiaro code
     runtime_lumiaro = (t_end_lumiaro - t_0_lumiaro) // scaling # compute runtime (in milliseconds)
 
@@ -37,7 +39,10 @@ def main():
     arr2 = np.zeros((n,1))
     for i in range(0,n):
         arr[i] = i * (i+1)
-
+    
+    ###############
+    #compute test error values
+    ###############
     t_end_improved = time.time_ns()
     runtime_improved = (t_end_improved - t_0_improved) // scaling
     ###############
