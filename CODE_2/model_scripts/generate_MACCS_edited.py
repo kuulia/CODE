@@ -1,14 +1,14 @@
 from rdkit import DataStructs
 from rdkit import Chem
-import os
+from os import path
 import numpy as np
 from rdkit.Chem import MACCSkeys
 
 def main():
 
-	filepath = os.path.relpath("CODE_2/data")
+	filepath = path.relpath("CODE_2/data")
 	name_of_file = 'all_smiles'
-	filename= os.path.join(filepath, name_of_file + '.txt')
+	filename= path.join(filepath, name_of_file + '.txt')
 	all_smi = open(filename,'r')
 
 	mol_train = [Chem.MolFromSmiles(x.strip()) for x in all_smi]
@@ -24,7 +24,7 @@ def main():
 			print(np.array(s).shape)
 		i += 1
 		matrix.append(s)
-	fileoutname = '../CODE/CODE_2/data/' + name_of_file + '_MACCS.txt'
+	fileoutname =  f'../CODE/CODE_2/data/{name_of_file}_MACCS.txt'
 	np.savetxt(fileoutname, matrix, fmt = "%s")
 
 if __name__ == "__main__":

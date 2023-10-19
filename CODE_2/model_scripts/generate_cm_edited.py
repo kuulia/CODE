@@ -1,4 +1,4 @@
-import os
+from os import path
 import numpy as np
 
 def main():
@@ -7,9 +7,9 @@ def main():
 
     ################# input file ############################################
     max_na = 48
-    filepath = os.path.relpath("CODE_2/data")
+    filepath = path.relpath("CODE_2/data")
     name_of_file = 'all_edited'
-    filename= os.path.join(filepath, name_of_file + '.xyz')
+    filename= path.join(filepath, name_of_file + '.xyz')
     atoms=[]
     xyz=open(filename, errors='ignore')
     na_array = []
@@ -112,7 +112,7 @@ def main():
     print("count is", count)
 
 
-    fileoutname = '../CODE/CODE_2/data/' + name_of_file + '_cm.txt'
+    fileoutname = f'../CODE/CODE_2/data/{name_of_file}_cm.txt'
 
 
     #flat_list = [item for sublist in coulomblist_array for item in sublist]

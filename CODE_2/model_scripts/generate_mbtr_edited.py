@@ -1,22 +1,19 @@
 from dscribe.descriptors import MBTR
-from dscribe.descriptors import CoulombMatrix
-from ase.build import molecule
 from ase.io import read
 import numpy as np
 import ase
-import os
-from ase.visualize import view
-import matplotlib.pyplot as mpl
+from os import path
 import ase.data
 
-def main(k):
+def main():
 	element_list = ['C','O','N','H', 'Br', 'S', 'Cl']
+	k=2
 	#sigma1 = 0.0001
 	sigma2 = 0.0075
 	sigma3 = 0.1
-	filepath = os.path.relpath("CODE_2/data")
+	filepath = path.relpath("CODE_2/data")
 	name_of_file = 'all_edited'
-	filename= os.path.join(filepath, name_of_file + '.xyz')
+	filename= path.join(filepath, name_of_file + '.xyz')
 	xyz = open(filename, errors='ignore')
 	inter= []
 	elements = []
@@ -50,7 +47,7 @@ def main(k):
 			periodic=False,
 			geometry = {"function": "atomic_number"},
 			grid = {"min": 0, "max": 1, 'n': 100, 'sigma': 0.1},
-			weighting = {"function": "exp", "scale": 1.2, "threshold": 1e-3},
+			weighting = {"function": "unity", "scale": 1.2, "threshold": 1e-3},
 			sparse=False
 		)
 	if (k == 2):
@@ -77,11 +74,11 @@ def main(k):
 
 		all_m = []
 
-		for i in range(len(elements)):
-			mole = ase.Atoms(elements[i],coor[i])
+		for i, element in enumerate(elements):
+			mole = ase.Atoms(element,coor[i])
 			mbtr_test = mbtr.create(mole)
 			s = np.round(mbtr_test, decimals=3)
-			all_m.append(s[0])
+			all_m.append(s)
 
 		h = np.array(all_m)
 
@@ -92,7 +89,7 @@ def main(k):
 		#
 		#outname = 'all_mbtr_1_' + str(sigma1) +  '_2_' + str(sigma2) + '_3_' + str(sigma3) + '.txt'
 
-		fileoutname = '../CODE/CODE_2/data/' + name_of_file + '_mbtr.txt'
+		fileoutname =  f'../CODE/CODE_2/data/{name_of_file}_mbtr.txt'
 		np.savetxt(fileoutname ,h, fmt="%s")
 
 
