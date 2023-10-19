@@ -25,7 +25,7 @@ def main():
     #gridsearch_loop.main(1.0)  #not working currently
     for i, desc in enumerate(descs):
         t_0_desc = perf_counter_ns() # store starting time of descriptor generator
-        gens[i]()
+        #gens[i]()
         t_end_desc = perf_counter_ns() # store the end time of descriptor generator
         runtime_desc = (t_end_desc - t_0_desc) // scaling
 
@@ -61,8 +61,11 @@ def main():
         #print('The runtime of the original lumiaro code is: ', runtime_lumiaro, ' s \n')
         #print('The runtime of the improved code is: ', runtime_improved, ' s\n')
     
-    runtime_total = (perf_counter_ns() - t_0) // scaling #calculate the total runtime of the code, in seconds
-    print('The total runtime of the script is: ', runtime_total, ' ms\n')
+    runtime_total = (perf_counter_ns() - t_0) // (scaling*60_000) #calculate the total runtime of the code, in minutes
+    print('The total runtime of the script is: ', runtime_total, ' min\n')
+    lines = [f'The total runtime of the script was: {runtime_total:.1f} min\n',]
+    with open(output_filename, 'a') as f:
+        f.writelines(lines)
 
 if __name__ == "__main__":
     clearvars()

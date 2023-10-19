@@ -165,7 +165,7 @@ def main(descriptor, target):
     plt.title('Predicted vs. True', fontsize=18)
     ax.set_xlabel('Reference', fontsize=18)
     ax.set_ylabel('Predicted', fontsize=18)
-    fig.savefig(f'CODE_2/data/regr_plot_{descriptor}_{target}.png')
+    fig.savefig(f'CODE_2/data/plot_regr_{descriptor}_{target}.png')
 
 
 
@@ -175,7 +175,7 @@ def main(descriptor, target):
     plt.title('Learning Curve', fontsize=18)
     ax.set_xlabel('Train Size', fontsize=18)
     ax.set_ylabel('MAE', fontsize=18)
-    fig.savefig(f'CODE_2/data/learn_curve_plot_{descriptor}_{target}.png')
+    fig.savefig(f'CODE_2/data/plot_learn_curve_{descriptor}_{target}.png')
 
 if __name__ == "__main__":
     main()

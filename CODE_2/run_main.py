@@ -14,18 +14,20 @@ def main():
     scaling = 1_000_000_000 # used for conversions of powers of 10
 
     # run precomputations before benchmarking, loading the models etc
-    descs = ['cm', 'mbtr', 'MACCS', 'Morgan', 'TopFP']
-    gens = [generate_cm_edited.main(), 
-            generate_mbtr_edited.main(2),
-            generate_MACCS_edited.main(),
-            generate_Morgan_edited.main(),
-            generate_TopFP_edited.main()]
+    #descs = ['cm', 'mbtr', 'MACCS', 'Morgan', 'TopFP']
+
+    #generate_cm_edited.main(), 
+    #generate_mbtr_edited.main(2)
+    #generate_MACCS_edited.main()
+    #generate_Morgan_edited.main()
+    #generate_TopFP_edited.main()
     #gridsearch_loop.main(1.0)  #not working currently
+
     t_end_precomps = perf_counter_ns() # store the end time of precomputations
     runtime_precomps = (t_end_precomps - t_0) // scaling
     ###############
     # run lumiaro code
-    desc = descs[2]
+    desc = 'MACCS'
     t_0_lumiaro = perf_counter_ns() # store the starting time of executing main
     #krr_edited.main(desc, 'log_p_sat')
     ###############
