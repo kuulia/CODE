@@ -1,0 +1,168 @@
+Key ,Pattern,rdkit descr.,Question
+0, "", #extra empty key, empty key
+1," ('?', 0)", # ISOTOPE A , Are there isotopes 
+2," ('[#104]', 0)", # limit the above def'n since the RDKit only accepts up to #104, Is there an atom with an atomic number above 103?  
+3," ('[#32,#33,#34,#50,#51,#52,#82,#83,#84]', 0)"," # Group IVa,Va,VIa Rows 4-6  "," Are there atoms belonging to groups IVa, Va, Via, rows 4-6? "
+4," ('[Ac,Th,Pa,U,Np,Pu,Am,Cm,Bk,Cf,Es,Fm,Md,No,Lr]', 0)", # actinide , Is there an actinide in the molecule?  
+5," ('[Sc,Ti,Y,Zr,Hf]', 0)"," # Group IIIB,IVB (Sc...)   ", Does the molecule contain atoms from group IIIB or IVB? 
+6," ('[La,Ce,Pr,Nd,Pm,Sm,Eu,Gd,Tb,Dy,Ho,Er,Tm,Yb,Lu]', 0)", # Lanthanide , Does the molecule contain lanthanides? 
+7," ('[V,Cr,Mn,Nb,Mo,Tc,Ta,W,Re]', 0)"," # Group VB,VIB,VIIB "," Does the molecule contain atoms from group VB, VIB or VIIB? "
+8," ('[!#6;!#1]1~*~*~*~1', 0)", # QAAA@1 , Is there a heteroatom at a 3 bond distance from a ring fragment?  
+9," ('[Fe,Co,Ni,Ru,Rh,Pd,Os,Ir,Pt]', 0)", # Group VIII (Fe...) , Is there an atom from Group VIII? 
+10," ('[Be,Mg,Ca,Sr,Ba,Ra]', 0)", # Group IIa (Alkaline earth) , Is there an atom from Group IIa? 
+11," ('*1~*~*~*~1', 0)", # 4M Ring , Does the molecule have a four-membered ring? 
+12," ('[Cu,Zn,Ag,Cd,Au,Hg]', 0)"," # Group IB,IIB (Cu..) "," Is there an atom from Group IB, IIB? "
+13," ('[#8]~[#7](~[#6])~[#6]', 0)", # ON(C)C , Does the molecule contain a hydroxylamine-derivative? 
+14," ('[#16]-[#16]', 0)", # S-S , Does the molecule have a disulfide bond?  
+15," ('[#8]~[#6](~[#8])~[#8]', 0)", # OC(O)O , Does the molecule contain a methanetriol? 
+16," ('[!#6!#1]1~*~*~1', 0)", # QAA@1 , Does the molecule have a heteroatom at a 2 bond distance from a ring?  
+17," ('[#6]#[#6]', 0)", #CTC , Does the molecule have 2 triplebonded carbons?  
+18," ('[#5,#13,#31,#49,#81]', 0)", # Group IIIA (B...)  , Is there an atom from Group VIII? 
+19," ('*1~*~*~*~*~*~*~1', 0)", # 7M Ring , Is there a seven membered ring?  
+20," ('[#14]', 0)", #Si , Is there an silicon atom? 
+21," ('[#6]=[#6](~[!#6;!#1])~[!#6;!#1]', 0)", # C=C(Q)Q , Does the molecule have a set of doubled-bonded carbons with one carbon bonded to two heteroatoms? 
+22," ('*1~*~*~1', 0)", # 3M Ring , Does the molecule have a threemembered ring? 
+23," ('[#7]~[#6](~[#8])~[#8]', 0)", # NC(O)O , Does the molecule contain an aminomethanediol? 
+24," ('[#7]-[#8]', 0)", # N-O , Is there a single bond between a nitrogen and oxygen?  
+25," ('[#7]~[#6](~[#7])~[#7]', 0)", # NC(N)N , Does the molecule contain an methanetriamine? FRAGMENT GROUP 
+26," ('[#6]=;@[#6](@*)@*', 0)", # C$=C($A)$A , Is there a double-bonded carbon that has three ring bond?  
+27," ('[I]', 0)", # I , Is there an iodine atom? 
+28," ('[!#6;!#1]~[CH2]~[!#6;!#1]', 0)", # QCH2Q , Are there two heteroatoms bonded to the same aliphatic carbon?  
+29," ('[#15]', 0)", # P , Is there an phosphor atom? 
+30," ('[#6]~[!#6;!#1](~[#6])(~[#6])~*', 0)", # CQ(C)(C)A , Is there a heteroatom at bonded to four atoms three of which are carbons?  
+31," ('[!#6!#1]~[F,Cl,Br,I]', 0)", # QX , Does the molecule have any heteroatom bonded to a halogen  
+32," ('[#6]~[#16]~[#7]', 0)", # CSN , Does the molecule have a aminothiomethane group?  
+33," ('[#7]~[#16]', 0)", # NS , Is there any bond between nitrogen and sulphur?  
+34," ('[CH2]=*', 0)", # CH2=A , Is there a doublebonded methylidene group?  
+35," ('[Li,Na,K,Rb,Cs,Fr]', 0)", # Group IA (Alkali Metal) , Is there alkali metal? 
+36," ('[#16R]', 0)", # S Heterocycle , Is there a sulphur containing heterocycle? 
+37," ('[#7]~[#6](~[#8])~[#7]', 0)", # NC(O)N , Does the molecule have a diaminocarbinol group?  
+38," ('[#7]~[#6](~[#6])~[#7]', 0)", # NC(C)N , Does the molecule have a diaminoethyl group?  
+39," ('[#8]~[#16](~[#8])~[#8]', 0)", # OS(O)O , Is there a sulphur atom bonded to three oxygens?  
+40," ('[#16]-[#8]', 0)", # S-O , Does the molecule have a thioperoxide (single bond between a sulphur and oxygen atom)? 
+41," ('[#6]#[#7]', 0)", # CTN , Does the molecule have a cyano group?  
+42," ('F', 0)", # F , Is there an flourine atom? 
+43," ('[!#6;!#1;!H0]~*~[!#6;!#1;!H0]', 0)", # QHAQH ," Are there two heteroatoms, both bonded to a hydrogen atom each, who are separated by one atom?  "
+44," ('[!#1;!#6;!#7;!#8;!#9;!#14;!#15;!#16;!#17;!#35;!#53]', 0)", # OTHER ," Are there any atoms other than H, C, N, O, Si, P, S, F, Cl, Br, and I? "
+45," ('[#6]=[#6]~[#7]', 0)", # C=CN , Does the molecule have a aminoethylidene group?  
+46," ('Br', 0)", # BR , Is there a bromine atom?  
+47," ('[#16]~*~[#7]', 0)", # SAN , Is there sulphur separated by two bonds to nitrogen?  
+48," ('[#8]~[!#6;!#1](~[#8])(~[#8])', 0)", # OQ(O)O , Is there a heteroatoms bonded to three oxygen atoms?  
+49," ('[!+0]', 0)", # CHARGE   , Does the molecule have atoms with a formal charge?  
+50," ('[#6]=[#6](~[#6])~[#6]', 0)", # C=C(C)C , Is there an isobutylene group? 
+51," ('[#6]~[#16]~[#8]', 0)", # CSO , Is there a carbon bonded to sulphur to an oxygen?  
+52," ('[#7]~[#7]', 0)", # NN , Are there two nitrogens bonded together?  
+53," ('[!#6;!#1;!H0]~*~*~*~[!#6;!#1;!H0]', 0)", # QHAAAQH ," Are there two heteroatoms, both bonded to a hydrogen atom each, who are separated by three atoms?  "
+54," ('[!#6;!#1;!H0]~*~*~[!#6;!#1;!H0]', 0)", # QHAAQH ," Are there two heteroatoms, both bonded to a hydrogen atom each, who are separated by two atoms?  "
+55," ('[#8]~[#16]~[#8]', 0)", #OSO , Is there a sulphur bonded to two oxygens?  
+56," ('[#8]~[#7](~[#8])~[#6]', 0)", # ON(O)C , Does the molecule contain dioxyamines?  
+57," ('[#8R]', 0)", # O Heterocycle , Does the molecule contain a heterocycle with oxygen?  
+58," ('[!#6;!#1]~[#16]~[!#6;!#1]', 0)", # QSQ , Is there a sulphur atom bonded to two heteroatoms?  
+59," ('[#16]!,*,*', 0)", # Snot%A%A , Is the molecule lacking sulphur atoms?  
+60," ('[#16]=[#8]', 0)", # S=O , Does the molecule contain a double bond between a sulphur and oxygen atom?  
+61," ('*~[#16](~*)~*', 0)", # AS(A)A , Is there a sulphur atom bonded to three atoms?  
+62," ('*@*!@*@*', 0)", # A$!A$A , Are there two rings separated by a bond?  
+63," ('[#7]=[#8]', 0)", # N=O , Does the molecule have a nitroxyl group?  
+64," ('*@*!@[#16]', 0)", # A$A!S , Is there a carbon connected to an atom in a ring?  
+65," ('c,n', 0)", # C%N , Is there an aromatic nitrogen or carbon?  
+66," ('[#6]~[#6](~[#6])(~[#6])~*', 0)", # CC(C)(C)A , Is there a isobutanyl group bonded to an aliphatic carbon  
+67," ('[!#6!#1]~[#16]', 0)", # QS , Is there a heteroatom bonded to sulphur atom?  
+68," ('[!#6;!#1;!H0]~[!#6;!#1;!H0]', 0)", # QHQH (&...) SPEC Incomplete ," Are there two bonded heteroatoms, both bonded to a hydrogen atom? "
+69," ('[!#6;!#1]~[!#6;!#1;!H0]', 0)", # QQH ," Is there a bond between two heteroatoms, one of which has a bond to an hydrogen atom?  "
+70," ('[!#6;!#1]~[#7]~[!#6;!#1]', 0)", # QNQ , Are there two heteroatoms that are bonded to the same nitrogen atom?  
+71," ('[#7]~[#8]', 0)", # NO , Does the molecule have a hydroxylamine group?  
+72," ('[#8]~*~*~[#8]', 0)", # OAAO , Are there two oxygens separated by 2 atoms?  
+73," ('[#16]=*', 0)", # S=A , Does the molecule have a double bonded sulphur?  
+74," ('[CH3]~*~[CH3]', 0)", # CH3ACH3 , Are there two methyl groups bonded to the same atom?  
+75," ('*!@[#7]@*', 0)", # A!N$A , Is there a nitrogen in a ring that is connected to an atom outside the ring?  
+76," ('[#6]=[#6](~*)~*', 0)", # C=C(A)A , Is there two double bonded carbons where one carbon is bonded to two atoms?  
+77," ('[#7]~*~[#7]', 0)", # NAN , Are there two nitrogens bonded to the same atom?  
+78," ('[#6]=[#7]', 0)", # C=N , Is there a nitrogen double bonded to a carbon? 
+79," ('[#7]~*~*~[#7]', 0)", # NAAN , Are there two nitrogens that are 2 atoms apart?  
+80," ('[#7]~*~*~*~[#7]', 0)", # NAAAN , Are there two nitrogens that are 3 atoms apart?  
+81," ('[#16]~*(~*)~*', 0)", # SA(A)A ," Is there an atom with three bonds, one of which is connected to a sulphur atom?  "
+82," ('*~[CH2]~[!#6;!#1;!H0]', 0)", # ACH2QH , Is there a heteroatom bonded to a methylene and a hydrogen. 
+83," ('[!#6;!#1]1~*~*~*~*~1', 0)", # QAAAA@1 , Is there a heteroatom bonded to a ring?  
+84," ('[NH2]', 0)", #NH2 , Does the molecule have a primary amine?  
+85," ('[#6]~[#7](~[#6])~[#6]', 0)", # CN(C)C , Is there a nitrogen bonded to three carbons?  
+86," ('[C;H2,H3][!#6;!#1][C;H2,H3]', 0)", # CH2QCH2 , Are there two methylene groups bonded to the same heteroatom?  
+87," ('[F,Cl,Br,I]!@*@*', 0)", # X!A$A , Is there a halide bonded to a ring?  
+88," ('[#16]', 0)", # S , Is there a sulphur atom?  
+89," ('[#8]~*~*~*~[#8]', 0)", # OAAAO , Are there two oxygens separated by 3 atoms?  
+90," ('[$([!#6;!#1;!H0]~*~*~[CH2]~*),$([!#6;!#1;!H0;R]1@[R]@[R]@[CH2;R]1),$([!#6;!#1;!H0]~[R]1@[R]@[CH2;R]1)]', 0)", # QHAACH2A , Is there a heteroatom bonded to a hydrogen and separated by two atoms to a methylene?  
+91," ('[$([!#6;!#1;!H0]~*~*~*~[CH2]~*),$([!#6;!#1;!H0;R]1@[R]@[R]@[R]@[CH2;R]1),$([!#6;!#1;!H0]~[R]1@[R]@[R]@[CH2;R]1),$([!#6;!#1;!H0]~*~[R]1@[R]@[CH2;R]1)]', 0)", # QHAAACH2A , Is there a heteroatom bonded to a hydrogen and separated by three atoms to a methylene?  
+92," ('[#8]~[#6](~[#7])~[#6]', 0)", # OC(N)C ," Is there there a carbon bonded to another carbon, a nitrogen and a oxygen atom?  "
+93," ('[!#6!#1]~[CH3]', 0)", # QCH3 , Is there a heteroatom bonded to a methyl group?  
+94," ('[!#6!#1]~[#7]', 0)", # QN , Is there a heteroatom bonded nitrogen atom?  
+95," ('[#7]~*~*~[#8]', 0)", # NAAO , Is there a nitrogen and oxygen atom separated by two atoms?  
+96," ('*1~*~*~*~*~1', 0)", # 5 M ring , Is there a five membered ring?  
+97," ('[#7]~*~*~*~[#8]', 0)", # NAAAO , Is there a nitrogen and oxygen atom separated by three atoms?  
+98," ('[!#6;!#1]1~*~*~*~*~*~1', 0)", # QAAAAA@1 , Is there a heteroatom separated by five atoms to a ring?  
+99," ('[#6]=[#6]', 0)", # C=C , Are there two carbons that are double-bonded?  
+100," ('*~[CH2]~[#7]', 0)", # ACH2N , Is there a methylene bridge directly connected to a nitrogen atom?  
+101,"('[$([R]@1@[R]@[R]@[R]@[R]@[R]@[R]@[R]1),$([R]@1@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]1),$([R]@1@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]1),$([R]@1@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]1),$([R]@1@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]1),$([R]@1@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]1),$([R]@1@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]@[R]1)]', 0)", # 8M Ring or larger. This only handles up to ring sizes of 14 , Is there an eight membered ring or larger?  
+102," ('[!#6!#1]~[#8]', 0)", # QO , Does the molecule have a heteroatom  
+103," ('Cl', 0)", # CL , Is there a chlorine atom?  
+104," ('[!#6;!#1;!H0]~*~[CH2]~*', 0)", # QHACH2A , Is there a methylene bridge connected to a heteroatom which in turn is bonded to a hydrogen?  
+105," ('*@*(@*)@*', 0)", # A$A($A)$A , Is there an atom bonded with three ring bonds?  
+106," ('[!#6;!#1]~*(~[!#6;!#1])~[!#6;!#1]', 0)", # QA(Q)Q , Is there an atom bonded to three heteroatoms?  
+107," ('[F,Cl,Br,I]~*(~*)~*', 0)", # XA(A)A ," Is there and atom with three bonds, one of which is to a halogen?  "
+108," ('[CH3]~*~*~*~[CH2]~*', 0)", # CH3AAACH2A , Is there a methyl group separated by four bonds to a methine group?  
+109," ('*~[CH2]~[#8]', 0)", # ACH2O , Is there an oxygen bonded to an aliphatic carbon?  
+110," ('[#7]~[#6]~[#8]', 0)", # NCO , Is there a carbon bonded to a nitrogen and an oxygen atom?  
+111," ('[#7]~*~[CH2]~*', 0)", # NACH2A ," Is there a methylene bridge connected to two atoms, one of which is also bonded to a nitrogen atom?  "
+112," ('*~*(~*)(~*)~*', 0)", # AA(A)(A)A , Is there an atom with at least four bonds to other atoms?  
+113," ('[#8]!:*:*', 0)", # Onot%A%A , Is there an oxygen with a non-aromatic bond which is bonded to an atom that has an aromatic bond?  
+114," ('[CH3]~[CH2]~*', 0)", # CH3CH2A , Is there an ethyl group?  
+115," ('[CH3]~*~[CH2]~*', 0)", # CH3ACH2A , Is there a methyl group separated by two bonds to a methine group?  
+116," ('[$([CH3]~*~*~[CH2]~*),$([CH3]~*1~*~[CH2]1)]', 0)", # CH3AACH2A , Is there a methyl group separated by three bonds to a methine group?  
+117," ('[#7]~*~[#8]', 0)", # NAO , Is there a nitrogen and oxygen atom separated by one atom? 
+118," ('[$(*~[CH2]~[CH2]~*),$(*1~[CH2]~[CH2]1)]', 1)", # ACH2CH2A > 1 , Are there more than one instance two methylenes bonded together?  
+119," ('[#7]=*', 0)", # N=A , Is there a double bonded nitrogen?   
+120," ('[!#6R]', 1)", # Heterocyclic atom > 1 (&...) Spec Incomplete , Is there more than one heteroatom in the ring? 
+121," ('[#7R]', 0)", # N Heterocycle , Is there a nitrogen containing ring?  
+122," ('*~[#7](~*)~*', 0)", # AN(A)A , Is there a nitrogen bonded to three atoms?  
+123," ('[#8]~[#6]~[#8]', 0)", # OCO , Is there a carbon bonded to two oxygens?  
+124," ('[!#6!#1]~[!#6!#1]', 0)", # QQ , Are there two heteroatoms bonded together?  
+125," ('?', 0)", # Aromatic Ring > 1 , Is there more than one aromatic ring?  
+126," ('*!@[#8]!@*', 0)", # A!O!A , Is there an oxygen with two non-ring bonds?  
+127," ('*@*!@[#8]', 1)", # A$A!O > 1 (&...) Spec Incomplete , Is there more than one instance of an atom connected to an oxygen atom and that sits in a ring?  
+128," ('[$(*~[CH2]~*~*~*~[CH2]~*),$([R]1@[CH2;R]@[R]@[R]@[R]@[CH2;R]1),$(*~[CH2]~[R]1@[R]@[R]@[CH2;R]1),$(*~[CH2]~*~[R]1@[R]@[CH2;R]1)]', 0)", # ACH2AAACH2A , Are there two methylene groups separated by three atoms?  
+129," ('[$(*~[CH2]~*~*~[CH2]~*),$([R]1@[CH2]@[R]@[R]@[CH2;R]1),$(*~[CH2]~[R]1@[R]@[CH2;R]1)]', 0)", # ACH2AACH2A , Are there two methylene groups separated by two atoms?  
+130," ('[!#6;!#1]~[!#6;!#1]', 1)", # QQ > 1 (&...)  Spec Incomplete , Is there more than one instance of two heteroatoms bonded together?  
+131," ('[!#6;!#1;!H0]', 1)", # QH > 1 , Is there more than one hydrogen atoms bonded to a heteroatoms?  
+132," ('[#8]~*~[CH2]~*', 0)", # OACH2A , Is there an oxygen separated  by one atom to an aliphatic carbon?  
+133," ('*@*!@[#7]', 0)", # A$A!N , Is there an atom connected to an nitrogen atom and that sits in a ring?  
+134," ('[F,Cl,Br,I]', 0)", # X (HALOGEN) , Is there a halogen atom? 
+135," ('[#7]!:*:*', 0)", # Nnot%A%A , Is there a nitrogen atom connected via a non-aromatic bond to two atoms bonded by an aromatic bond? 
+136," ('[#8]=*', 1)", # O=A>1  , Is there more than 1 double bonded oxygen?  
+137," ('[!CR]', 0)", # Heterocycle , Is there an aromatic carbon in a ring?  
+138," ('[!#6!#1]~[CH2]~*', 1)", # QCH2A>1 (&...) Spec Incomplete , Is there a heteroatom bonded to a methylene bridge? 
+139," ('[O!H0]', 0)", # OH , Is there an hydroxyl group?  
+140," ('[#8]', 3)", # O > 3 (&...) Spec Incomplete , Is there more than three oxygens?  
+141," ('[CH3]', 2)", # CH3 > 2  (&...) Spec Incomplete , Is there more than 2 methyl groups?  
+142," ('[#7]', 1)", # N > 1 , Is there more than one nitrogen atom?  
+143," ('*@*!@[#8]', 0)", # A$A!O , Is there an atom connected to an oxygen atom and that sits in a ring?  
+144," ('*!:*:*!:*', 0)", # Anot%A%Anot%A , Are there two atoms connected via an aromatic bond that each also are connected to at least one other atom with a non-aromatic bond?  
+145," ('*1~*~*~*~*~*~1', 1)", # 6M ring > 1 , Is there more than one six membered ring?  
+146," ('[#8]', 2)", # O > 2 , Is there more than 2 oxygen atom?  
+147," ('[$(*~[CH2]~[CH2]~*),$([R]1@[CH2;R]@[CH2;R]1)]', 0)", # ACH2CH2A , Are there two methylene groups bonded together?  
+148," ('*~[!#6;!#1](~*)~*', 0)", # AQ(A)A , Is there a heteroatom bonded to three atoms?  
+149," ('[CH3,H4]', 1)", # CH3 > 1 , Is there more than one methyl group?  
+150," ('*!@*@*!@*', 0)", # A!A$A!A , Is there a bond between two atoms that each have a ring bond?  
+151," ('[#7!H0]', 0)", # NH , Is there a nitrogen bonded to at least one hydrogen?  
+152," ('[#8]~[#6](~[#6])~[#6]', 0)", # OC(C)C , Is there a carbon atom bonded to two carbon atoms and one oxygen atom?  
+153," ('[!#6!#1]~[CH2]~*', 0)", # QCH2A , Is there a methylene bridge bonded to a heteroatom?  
+154," ('[#6]=[#8]', 0)", # C=O , Is there at least one carbonyl group?  
+155," ('*!@[CH2]!@*', 0)", # A!CH2!A , Is there a methylene bridge connected by to non-ring bonds?  
+156," ('[#7]~*(~*)~*', 0)", # NA(A)A ," Is there an atom bonded to three atoms, one of which is a nitrogen?  "
+157," ('[#6]-[#8]', 0)", # C-O , Is there a single bond between a oxygen and carbon?  
+158," ('[#6]-[#7]', 0)", # C-N , Is there a single bond between a nitrogen and carbon?  
+159," ('[#8]', 1)", # O>1 , Are there more than one oxygen atoms?  
+160," ('[CH3,H4]', 0)", #CH3 , Is there a methyl group?  
+161," ('[#7]', 0)", # N , Is there a nitrogen atom?  
+162," ('a', 0)", # Aromatic , Is the molecule aromatic?  
+163," ('*1~*~*~*~*~*~1', 0)", # 6M Ring , Is there a six membered ring?  
+164," ('[#8]', 0)", # O , Is there a oxygen atom ?  
+165," ('[R]', 0)", # Ring , Does the molecule have a ring fragment?  
+166," ('?', 0)"," # Fragments  FIX, this can't be done in SMARTS ", Does the molecule have more than one fragments? 
