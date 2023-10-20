@@ -1,36 +1,7 @@
-Benchmarks for cm
-#######################
-The runtime of generating cm was: 0 ms 
-The runtime of the original lumiaro code for cm was: 0 ms 
-The runtime of the improved code for cm was: 0 ms 
-#######################
-
-Benchmarks for mbtr
-#######################
-The runtime of generating mbtr was: 0 ms 
-The runtime of the original lumiaro code for mbtr was: 0 ms 
-The runtime of the improved code for mbtr was: 0 ms 
-#######################
-
 Benchmarks for MACCS
 #######################
-The runtime of generating MACCS was: 0 ms 
-The runtime of the original lumiaro code for MACCS was: 0 ms 
+The runtime of generating MACCS was: 3 ms 
+The runtime of the original lumiaro code for MACCS was: 109 ms 
 The runtime of the improved code for MACCS was: 0 ms 
 #######################
 
-Benchmarks for Morgan
-#######################
-The runtime of generating Morgan was: 0 ms 
-The runtime of the original lumiaro code for Morgan was: 0 ms 
-The runtime of the improved code for Morgan was: 0 ms 
-#######################
-
-Benchmarks for TopFP
-#######################
-The runtime of generating TopFP was: 0 ms 
-The runtime of the original lumiaro code for TopFP was: 0 ms 
-The runtime of the improved code for TopFP was: 0 ms 
-#######################
-
-The total runtime of the script was: 0.0 min

@@ -17,7 +17,7 @@ def main():
     #descs = ['cm', 'mbtr', 'MACCS', 'Morgan', 'TopFP']
 
     #generate_cm_edited.main(), 
-    #generate_mbtr_edited.main(2)
+    generate_mbtr_edited.main()
     #generate_MACCS_edited.main()
     #generate_Morgan_edited.main()
     #generate_TopFP_edited.main()
@@ -27,9 +27,9 @@ def main():
     runtime_precomps = (t_end_precomps - t_0) // scaling
     ###############
     # run lumiaro code
-    desc = 'MACCS'
+    desc = 'mbtr'
     t_0_lumiaro = perf_counter_ns() # store the starting time of executing main
-    #krr_edited.main(desc, 'log_p_sat')
+    krr_edited.main(desc, 'log_p_sat')
     ###############
     #compute test error values
     ###############
