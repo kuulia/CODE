@@ -14,8 +14,8 @@ def write_benchmarks(filename, descriptor, runtimes):
     lines = [f'Benchmarks for {descriptor}\n',
               '#######################\n',
               f'The runtime of generating {descriptor} was: {runtimes[0]} ms \n',
-              f'The runtime of the original lumiaro code for {descriptor} was: {runtimes[1]} ms \n',
-              f'The runtime of the improved code for {descriptor} was: {runtimes[2]} ms \n',
+              f'The runtime of the original lumiaro code for {descriptor} was: {runtimes[1]} s \n',
+              f'The runtime of the improved code for {descriptor} was: {runtimes[2]} s \n',
               '#######################\n\n'
               ]
     with open(filename, 'a') as f:

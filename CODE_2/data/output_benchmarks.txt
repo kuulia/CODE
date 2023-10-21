@@ -1,7 +1,7 @@
-Benchmarks for MACCS
+Benchmarks for mbtr
 #######################
-The runtime of generating MACCS was: 3 ms 
-The runtime of the original lumiaro code for MACCS was: 109 ms 
-The runtime of the improved code for MACCS was: 0 ms 
+The runtime of generating mbtr was: 19 ms 
+The runtime of the original lumiaro code for mbtr was: 1315 ms 
+The runtime of the improved code for mbtr was: 0 ms 
 #######################
 
