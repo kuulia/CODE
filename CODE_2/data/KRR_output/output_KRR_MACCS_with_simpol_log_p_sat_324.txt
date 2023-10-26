@@ -1,0 +1,116 @@
+Begin KRR training.... 
+
+Training_sizes: [500, 1000, 1500, 2000, 2500, 3000]
+
+Other parameters: 
+Kernel used: rbf
+Test size: 414
+Random seed: 324
+
+Training_size: 500
+
+Training Errors: 
+Training MAE: 0.24410801798457846
+Training r2: 0.9748594391311132
+Training MSE: 0.11428693416594578
+
+Test Errors: 
+Test MAE: 0.512971991903209
+Test r2: 0.8928080783709307
+Test MSE: 0.4568676092951565
+
+Optimal parameters: 
+Optimal alpha: 0.01
+Optimal gamma: 0.01
+Best gridsearch score with optimal parameters: -0.5949532184842224
+
+
+Training_size: 1000
+
+Training Errors: 
+Training MAE: 0.2572253094570985
+Training r2: 0.9710574689237982
+Training MSE: 0.1252729796116607
+
+Test Errors: 
+Test MAE: 0.45872476334679585
+Test r2: 0.9157338705515006
+Test MSE: 0.3591545381462006
+
+Optimal parameters: 
+Optimal alpha: 0.01
+Optimal gamma: 0.01
+Best gridsearch score with optimal parameters: -0.4713870025125936
+
+
+Training_size: 1500
+
+Training Errors: 
+Training MAE: 0.27426816020398526
+Training r2: 0.9665661674574091
+Training MSE: 0.14690447547056024
+
+Test Errors: 
+Test MAE: 0.4292875930585339
+Test r2: 0.9218695013306184
+Test MSE: 0.33300358457645735
+
+Optimal parameters: 
+Optimal alpha: 0.01
+Optimal gamma: 0.01
+Best gridsearch score with optimal parameters: -0.45891641594103516
+
+
+Training_size: 2000
+
+Training Errors: 
+Training MAE: 0.2805361706170979
+Training r2: 0.9658274348755523
+Training MSE: 0.15336333316413178
+
+Test Errors: 
+Test MAE: 0.4079756132486012
+Test r2: 0.9296414116051475
+Test MSE: 0.29987856906392985
+
+Optimal parameters: 
+Optimal alpha: 0.01
+Optimal gamma: 0.01
+Best gridsearch score with optimal parameters: -0.4426125488298397
+
+
+Training_size: 2500
+
+Training Errors: 
+Training MAE: 0.2825836420541673
+Training r2: 0.9648273254785223
+Training MSE: 0.1560502066719468
+
+Test Errors: 
+Test MAE: 0.39072136914808553
+Test r2: 0.9352210918398123
+Test MSE: 0.2760971578278852
+
+Optimal parameters: 
+Optimal alpha: 0.01
+Optimal gamma: 0.01
+Best gridsearch score with optimal parameters: -0.4182784702757524
+
+
+Training_size: 3000
+
+Training Errors: 
+Training MAE: 0.18056304530127848
+Training r2: 0.9833379545415851
+Training MSE: 0.07412580623338196
+
+Test Errors: 
+Test MAE: 0.37273529458886595
+Test r2: 0.9374971090335956
+Test MSE: 0.266396440476845
+
+Optimal parameters: 
+Optimal alpha: 0.001
+Optimal gamma: 0.01
+Best gridsearch score with optimal parameters: -0.41020973735941063
+

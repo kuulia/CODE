@@ -12,8 +12,21 @@ from sklearn.metrics import mean_absolute_error
 ############################### Parameters for training ##########################################################################
 
 # input files for training (change these to appropriate)
-def main(descriptor, target):
+def main(descriptor, target, *, iter=None):
+    if iter is None:
+        krr_regr(descriptor, target, 324)
+    else:
+        if type(iter) is int:
+            random_state = [12,432,5,7543,12343,452,325432435,326,436,2435]
+            for i, state in enumerate(random_state):
+                if i == iter: break
+                else:
+                    print(f'Running iteration {i} with random seed {state}')
+                    krr_regr(descriptor, target, state)
 
+        else: print('Give number of iterations as integer value 1-10')
+
+def krr_regr(descriptor, target, seed):
     if (descriptor == 'cm' or descriptor == 'mbtr'): name_of_file = f'all_edited_{descriptor}.txt'
     else: name_of_file = f'all_smiles_{descriptor}.txt'
 
@@ -27,7 +40,7 @@ def main(descriptor, target):
     # parameters 
     kernel_used = 'rbf' # kernel used in KRR ('rbf'- Gaussian, 'laplacian'- Laplacian)
     test_size = 414 # size of test set 
-    random_seed = 324 
+    random_seed = seed 
     cv = 5 # number of folds for KRR crossvalidation
 
     # search space for KRR hyperparameters
@@ -64,7 +77,7 @@ def main(descriptor, target):
 
 
     # initializing outputfile and writing parameters in it
-    outputfile = open(f'CODE_2/data/output_KRR_{descriptor}_{target}.txt', 'w+')
+    outputfile = open(f'CODE_2/data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt', 'w+')
     outputfile.write("Begin KRR training.... \n\n")
 
     outputfile.write("Training_sizes: " + str(train_sizes) + "\n\n")
@@ -135,7 +148,7 @@ def main(descriptor, target):
         gamma_opt = grid_search.best_params_.get("gamma")
         alpha_opt = grid_search.best_params_.get("alpha")
 
-        outputfile = open(f'CODE_2/data/output_KRR_{descriptor}_{target}.txt', 'a+')
+        outputfile = open(f'CODE_2/data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt', 'a+')
 
         outputfile.write("\nTraining_size: " + str(train_size) + "\n\n")
 
@@ -165,7 +178,7 @@ def main(descriptor, target):
     plt.title('Predicted vs. True', fontsize=18)
     ax.set_xlabel('Reference', fontsize=18)
     ax.set_ylabel('Predicted', fontsize=18)
-    fig.savefig(f'CODE_2/data/plot_regr_{descriptor}_{target}.png')
+    fig.savefig(f'CODE_2/data/plots/plot_regr_{descriptor}_{target}_{seed}.png')
 
 
 
@@ -175,7 +188,7 @@ def main(descriptor, target):
     plt.title('Learning Curve', fontsize=18)
     ax.set_xlabel('Train Size', fontsize=18)
     ax.set_ylabel('MAE', fontsize=18)
-    fig.savefig(f'CODE_2/data/plot_learn_curve_{descriptor}_{target}.png')
+    fig.savefig(f'CODE_2/data/plots/plot_learn_curve_{descriptor}_{target}_{seed}.png')
 
 if __name__ == "__main__":
     main()
