@@ -21,7 +21,7 @@ def main(descriptor, target, *, iter=None):
             for i, state in enumerate(random_state):
                 if i == iter: break
                 else:
-                    print(f'Running iteration {i} with random seed {state}')
+                    print(f'Running iteration {i+1} with random seed {state}')
                     krr_regr(descriptor, target, state)
 
         else: print('Give number of iterations as integer value 1-10')

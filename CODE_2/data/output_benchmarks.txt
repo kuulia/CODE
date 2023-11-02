@@ -1,0 +1,7 @@
+Benchmarks for MACCS_with_simpol
+#######################
+The runtime of generating MACCS_with_simpol was: 1 ms 
+The runtime of the original lumiaro code for MACCS_with_simpol was: 978 s 
+The runtime of the improved code for MACCS_with_simpol was: 0 s 
+#######################
+
