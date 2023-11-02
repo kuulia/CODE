@@ -1,5 +1,6 @@
 #import this file
 from os import path
+import numpy as np
 
 def fun1():
     return 1
@@ -30,7 +31,6 @@ def summarizer(descriptor, target):
     outfile = open(fileoutname, 'w+')
     outfile.write(f'Test MAEs for {descriptor} -> {target} were:\n')
     outfile.close() 
-    print('Test MAEs are:\n')
     for state in random_state:
         name_of_file = f'output_KRR_{descriptor}_{target}_{state}.txt'
         filename = path.join(filepath, name_of_file)
@@ -40,8 +40,11 @@ def summarizer(descriptor, target):
         outfile = open(fileoutname, 'a')
         outfile.write(MAE)
         outfile.close()
-        print(MAE)
-        MAEs.append(MAE)
+        MAEs.append(float(MAE))
+    mean_val = sum(MAEs) / len(MAEs)
+    outfile = open(fileoutname, 'a')
+    outfile.write(f'\nmean: {mean_val}')
+    outfile.close()
     
 
 

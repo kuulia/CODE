@@ -29,8 +29,10 @@ def main():
     ###############
     # run lumiaro code
     desc = 'MACCS_with_simpol'
+    target = 'log_p_sat'
     t_0_lumiaro = perf_counter_ns() # store the starting time of executing main
-    krr_edited.main(desc, 'log_p_sat', iter=10)
+    krr_edited.main(desc, target, iter=10)
+    summarizer(desc, target)
     ###############
     #compute test error values
     ###############
