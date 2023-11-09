@@ -15,24 +15,32 @@ def main():
 
     # run precomputations before benchmarking, loading the models etc
     #descs = ['cm', 'mbtr', 'MACCS', 'Morgan', 'TopFP', 'MACCS_with_simpol']
+    #targets = ['log_p_sat', 'kwiomg', 'kwg']
 
     #generate_cm_edited.main(), 
     #generate_mbtr_edited.main()
     generate_MACCS_edited.main()
     #generate_Morgan_edited.main()
     #generate_TopFP_edited.main()
-    modify_MACCS_with_simpol_1.main()
+    #modify_MACCS_with_simpol_1.main()
+    #modify_MACCS_with_simpol_2.main()
+    modify_MACCS_with_simpol_3.main()
     #gridsearch_loop.main(1.0)  #not working currently<
 
     t_end_precomps = perf_counter_ns() # store the end time of precomputations
     runtime_precomps = (t_end_precomps - t_0) // scaling
+    
     ###############
-    # run lumiaro code
+    # run KRR model
     desc = 'MACCS_with_simpol'
     target = 'log_p_sat'
-    t_0_lumiaro = perf_counter_ns() # store the starting time of executing main
-    krr_edited.main(desc, target, iter=10)
-    summarizer(desc, target)
+    iters = 10
+
+    t_0_lumiaro = perf_counter_ns() # store the start time
+
+    krr_edited.main(desc, target, iter=iters)
+
+    if (iters == 10): summarizer(desc, target)
     ###############
     #compute test error values
     ###############

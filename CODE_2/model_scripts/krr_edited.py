@@ -178,7 +178,7 @@ def krr_regr(descriptor, target, seed):
     plt.title('Predicted vs. True', fontsize=18)
     ax.set_xlabel('Reference', fontsize=18)
     ax.set_ylabel('Predicted', fontsize=18)
-    fig.savefig(f'CODE_2/data/plots/plot_regr_{descriptor}_{target}_{seed}.png')
+    fig.savefig(f'CODE_2/data/plots/{descriptor}/plot_regr_{descriptor}_{target}_{seed}.png')
 
 
 
