@@ -4,7 +4,8 @@ from model_scripts import *
 import numpy as np
 from funs import *
 
-# the main for executing the whole code
+# the main for executing the whole code, Generates the chosen descriptors and
+# runs the KRR script. Generates a summary of the results.
 def main():
     ###############
     t_0 = perf_counter_ns() # store starting time of the whole script
@@ -29,11 +30,11 @@ def main():
 
     t_end_precomps = perf_counter_ns() # store the end time of precomputations
     runtime_precomps = (t_end_precomps - t_0) // scaling
-    
+
     ###############
     # run KRR model
     desc = 'MACCS_with_simpol'
-    target = 'log_p_sat'
+    target = 'kwg'
     iters = 10
 
     t_0_lumiaro = perf_counter_ns() # store the start time
