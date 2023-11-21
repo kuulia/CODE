@@ -29,10 +29,10 @@ def carbon_numbers(df):
         carbons[f'C_NO={carbon_no}'] = np.where((df[carbon] == carbon_no), 1, 0)
     return carbons
 
-def main():
+def main(seed: int):
 
-    filepath = path.relpath("CODE_2/data")
-    name_of_file = 'all_smiles_MACCS'
+    filepath = path.relpath("CODE_2/data/geckoq3414/MACCS")
+    name_of_file = f'geckoq_smiles_sample_{seed}_MACCS'
     filename= path.join(filepath, name_of_file + '.txt')
 
     data = pd.read_csv(filename, header=None, sep=' ')
@@ -45,13 +45,13 @@ def main():
 
     #load simpol groups
     data_simpol_raw = pd.read_csv(path.join(filepath, \
-                                            'all_smiles_simpol_groups.csv'))
+                                            'geckoq_smiles_molecules.csv'))
     #print(data_simpol_raw)
 
     potential_simpol_groups = pd.read_csv(path.join(filepath, \
                                                     'potential_simpol_groups.csv'))
     groups = list(potential_simpol_groups['Compound'])
-    
+
     #print(potential_simpol_groups)
     #print(groups)
 
@@ -80,7 +80,9 @@ def main():
         maccs_key_to_replace = unused_keys[key]
         maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
         
-    fileoutname =  f'../CODE/CODE_2/data/all_smiles_MACCS_with_simpol.txt'
+    fileoutname =  f'../CODE/CODE_2/data/geckoq3414/MACCS/geckoq_MACCS_with_simpol_{seed}.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
-    main()
+	random_seeds = [12,432,5,7543,12343,452,325432435,326,436,2435]
+	for seed in random_seeds:
+		main(seed)

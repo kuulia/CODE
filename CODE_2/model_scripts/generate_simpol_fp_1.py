@@ -25,8 +25,6 @@ def main():
                                                     'potential_simpol_groups.csv'))
     groups = list(potential_simpol_groups['Compound'])
     groups.remove('carbon number')
-    multiple_simpol_groups = pd.read_csv(path.join(filepath, \
-                                                   'potential_simpol_groups.csv'))
 
     #print(potential_simpol_groups)
     #print(groups)

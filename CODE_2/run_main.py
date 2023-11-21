@@ -6,6 +6,7 @@ from funs import *
 
 # the main for executing the whole code, Generates the chosen descriptors and
 # runs the KRR script. Generates a summary of the results.
+
 def main():
     ###############
     t_0 = perf_counter_ns() # store starting time of the whole script
@@ -34,12 +35,12 @@ def main():
     ###############
     # run KRR model
     desc = 'MACCS_with_simpol'
-    target = 'kwg'
-    iters = 10
+    target = 'log_p_sat'
+    iters = 1
 
     t_0_lumiaro = perf_counter_ns() # store the start time
 
-    krr_edited.main(desc, target, iter=iters)
+    krr_edited_gpu.main(desc, target, iter=iters)
 
     if (iters == 10): summarizer(desc, target)
     ###############

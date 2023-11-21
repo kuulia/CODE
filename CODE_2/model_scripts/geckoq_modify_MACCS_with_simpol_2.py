@@ -22,17 +22,10 @@ def multiple_groups(df):
     fp_out = two_to_four_groups
     return fp_out
 
-def carbon_numbers(df):
-    carbon = 'carbon number'
-    carbons = pd.DataFrame()
-    for carbon_no in range(np.min(df[carbon]), np.max(df[carbon]) + 1):
-        carbons[f'C_NO={carbon_no}'] = np.where((df[carbon] == carbon_no), 1, 0)
-    return carbons
+def main(seed: int):
 
-def main():
-
-    filepath = path.relpath("CODE_2/data")
-    name_of_file = 'all_smiles_MACCS'
+    filepath = path.relpath("CODE_2/data/geckoq3414/MACCS")
+    name_of_file = f'geckoq_smiles_sample_{seed}_MACCS'
     filename= path.join(filepath, name_of_file + '.txt')
 
     data = pd.read_csv(filename, header=None, sep=' ')
@@ -45,13 +38,14 @@ def main():
 
     #load simpol groups
     data_simpol_raw = pd.read_csv(path.join(filepath, \
-                                            'all_smiles_simpol_groups.csv'))
+                                            'geckoq_smiles_molecules.csv'))
     #print(data_simpol_raw)
 
     potential_simpol_groups = pd.read_csv(path.join(filepath, \
                                                     'potential_simpol_groups.csv'))
     groups = list(potential_simpol_groups['Compound'])
-    
+    groups.remove('carbon number')
+
     #print(potential_simpol_groups)
     #print(groups)
 
@@ -62,25 +56,24 @@ def main():
     simpol_fp = generate_simpol_fingerprint(data_simpol)
     #print(simpol_fp)
     simpol_fp_multi = multiple_groups(data_simpol)
-    carbons = carbon_numbers(data_simpol)
     #print(simpol_fp_multi)
     for new_group in simpol_fp_multi.columns:
         groups.append(new_group)
-    for carbon in carbons.columns:
-        groups.append(carbon)
-    groups.remove('carbon number')
     #replace unused MACCS keys with simpol fingerprints
     #print(groups)
 
     all_simpol = simpol_fp.join(simpol_fp_multi)
-    all_simpol = all_simpol.join(carbons)
-    
+    #print(all_simpol)
     maccs_with_simpol = data
     for key, group in enumerate(groups):
         maccs_key_to_replace = unused_keys[key]
         maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
-        
-    fileoutname =  f'../CODE/CODE_2/data/all_smiles_MACCS_with_simpol.txt'
+    #print(maccs_with_simpol)
+
+
+    fileoutname =  f'../CODE/CODE_2/data/geckoq3414/MACCS/geckoq_MACCS_with_simpol_{seed}.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
-    main()
+	random_seeds = [12,432,5,7543,12343,452,325432435,326,436,2435]
+	for seed in random_seeds:
+		main(seed)
