@@ -39,7 +39,7 @@ def main():
     # run KRR model
     desc = 'MACCS_with_simpol'
     target = 'log_p_sat'
-    iters = 1
+    iters = 10
 
     t_0_lumiaro = perf_counter_ns() # store the start time
 
