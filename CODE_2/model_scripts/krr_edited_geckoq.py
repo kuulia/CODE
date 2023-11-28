@@ -29,7 +29,7 @@ def main(descriptor, target, *, iter=None):
 def krr_regr(descriptor, seed):
     target = 'geckoq_log_p_sat'
     name_of_file = f'geckoq_smiles_{descriptor}.txt'
-    filepath = path.relpath("CODE_2/data/geckoq_all")
+    filepath = path.relpath("data/geckoq_all")
     descriptor_filename = path.join(filepath, name_of_file)  # file of descriptors of the molecules (MBTR, CM, MACCS, Morgan, Topological etc.)
     target_property_filename = path.join(filepath, f'{target}.txt') # target property (p_vap, K_WIOMG, K_WG etc.)
 

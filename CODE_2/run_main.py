@@ -1,5 +1,6 @@
 from time import perf_counter_ns
 from os import path
+from os import getcwd
 from model_scripts import *
 import numpy as np
 from funs import *
@@ -11,8 +12,8 @@ def main():
     ###############
     t_0 = perf_counter_ns() # store starting time of the whole script
     #create new output file (if it exists, it is erased)
-    output_file_path = path.relpath('CODE_2/data/')
-    outputfile = path.join(output_file_path, 'output_benchmarks.txt')
+    filepath = path.relpath('data')
+    outputfile = path.join(filepath, 'output_benchmarks.txt')
     output_benchmarks = open(outputfile, 'w+')
     output_benchmarks.close()
     scaling = 1_000_000_000 # used for conversions of powers of 10
@@ -66,7 +67,6 @@ def main():
     runtime_total = (t_end_improved - t_0) // scaling #calculate the total runtime of the code, in seconds
     runtimes = [runtime_precomps, runtime_lumiaro, runtime_improved, runtime_total]
     
-    filepath = path.relpath("CODE_2/data")
     output_filename = path.join(filepath, 'output_benchmarks.txt')
     write_benchmarks(output_filename, desc, runtimes)
     #print runtime results
