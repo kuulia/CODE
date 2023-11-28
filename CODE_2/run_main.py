@@ -21,12 +21,12 @@ def main():
 
     #generate_cm_edited.main(), 
     #generate_mbtr_edited.main()
-    generate_MACCS_edited.main()
+    #generate_MACCS_edited.main()
     #generate_Morgan_edited.main()
     #generate_TopFP_edited.main()
     #modify_MACCS_with_simpol_1.main()
     #modify_MACCS_with_simpol_2.main()
-    modify_MACCS_with_simpol_3.main()
+    #modify_MACCS_with_simpol_3.main()
     #gridsearch_loop.main(1.0)  #not working currently<
 
     t_end_precomps = perf_counter_ns() # store the end time of precomputations
@@ -40,7 +40,7 @@ def main():
 
     t_0_lumiaro = perf_counter_ns() # store the start time
 
-    krr_edited_gpu.main(desc, target, iter=iters)
+    krr_edited_geckoq.main(desc, target, iter=iters)
 
     if (iters == 10): summarizer(desc, target)
     ###############

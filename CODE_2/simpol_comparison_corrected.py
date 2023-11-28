@@ -3,8 +3,8 @@ import numpy as np
 import math
 from os import path
     
-def atm_to_log_pa(df: pd.DataFrame) -> pd.DataFrame:
-    return df.apply(lambda atm : math.log10(atm * 101_325))
+def atm_to_log_kpa(df: pd.DataFrame) -> pd.DataFrame:
+    return df.apply(lambda atm : math.log10(atm * 101.325))
 
 def calc_abs_error(pred: pd.DataFrame, target: pd.DataFrame) -> pd.DataFrame:
     diff = target - pred
@@ -25,7 +25,7 @@ def main():
     simpol_psat_atm = simpol_predictions_raw['p0']
 
     pred_log_p_sat = pd.DataFrame()
-    pred_log_p_sat['p0'] = atm_to_log_pa(simpol_psat_atm)
+    pred_log_p_sat['p0'] = atm_to_log_kpa(simpol_psat_atm)
 
     pred_log_p_sat.to_csv('CODE_2/data/simpol_corrected_log_p_sat.txt', index=None, header=False)
     print(f'\nThe predicted saturation vapour pressures are:\n {pred_log_p_sat}')

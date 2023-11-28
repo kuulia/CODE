@@ -10,26 +10,27 @@ def generate_simpol_fingerprint(df):
             fingerprint[group] = np.where(df[group] >= 1, 1, 0)
     return fingerprint
 
-def main(seed: int):
+def main():
 
-    filepath = path.relpath("CODE_2/data/geckoq3414/MACCS")
-    name_of_file = f'geckoq_smiles_sample_{seed}_MACCS'
+    filepath = path.relpath("CODE_2/data/geckoq_all")
+    filepath_data = path.relpath("CODE_2/data")
+    name_of_file = 'geckoq_smiles_MACCS'
     filename= path.join(filepath, name_of_file + '.txt')
 
     data = pd.read_csv(filename, header=None, sep=' ')
     #print(data)
     
     #load unused keys
-    unused_keys_raw = pd.read_csv(path.join(filepath, 'unused_keys.csv'))
+    unused_keys_raw = pd.read_csv(path.join(filepath_data, 'unused_keys.csv'))
     unused_keys = unused_keys_raw['key']
     #print(unused_keys)
 
     #load simpol groups
     data_simpol_raw = pd.read_csv(path.join(filepath, \
-                                            'geckoq_smiles_molecules.csv'))
+                                            'geckoq_simpol_groups.csv'))
     #print(data_simpol_raw)
 
-    potential_simpol_groups = pd.read_csv(path.join(filepath, \
+    potential_simpol_groups = pd.read_csv(path.join(filepath_data, \
                                                     'potential_simpol_groups.csv'))
     groups = list(potential_simpol_groups['Compound'])
     groups.remove('carbon number')
@@ -51,9 +52,7 @@ def main(seed: int):
     #print(maccs_with_simpol)
 
 
-    fileoutname =  f'../CODE/CODE_2/data/geckoq3414/MACCS/geckoq_MACCS_with_simpol_{seed}.txt'
+    fileoutname = path.join(filepath, name_of_file + '_with_simpol'+ '.txt')
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
-	random_seeds = [12,432,5,7543,12343,452,325432435,326,436,2435]
-	for seed in random_seeds:
-		main(seed)
+    main()

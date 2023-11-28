@@ -31,24 +31,25 @@ def carbon_numbers(df):
 
 def main(seed: int):
 
-    filepath = path.relpath("CODE_2/data/geckoq3414/MACCS")
-    name_of_file = f'geckoq_smiles_sample_{seed}_MACCS'
+    filepath = path.relpath("CODE_2/data/geckoq_all")
+    filepath_data = path.relpath("CODE_2/data")
+    name_of_file = 'geckoq_smiles_MACCS'
     filename= path.join(filepath, name_of_file + '.txt')
 
     data = pd.read_csv(filename, header=None, sep=' ')
     #print(data)
     
     #load unused keys
-    unused_keys_raw = pd.read_csv(path.join(filepath, 'unused_keys.csv'))
+    unused_keys_raw = pd.read_csv(path.join(filepath_data, 'unused_keys.csv'))
     unused_keys = unused_keys_raw['key']
     #print(unused_keys)
 
     #load simpol groups
     data_simpol_raw = pd.read_csv(path.join(filepath, \
-                                            'geckoq_smiles_molecules.csv'))
+                                            'geckoq_simpol_groups.csv'))
     #print(data_simpol_raw)
 
-    potential_simpol_groups = pd.read_csv(path.join(filepath, \
+    potential_simpol_groups = pd.read_csv(path.join(filepath_data, \
                                                     'potential_simpol_groups.csv'))
     groups = list(potential_simpol_groups['Compound'])
 
