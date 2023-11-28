@@ -1,7 +1,6 @@
 #!/bin/bash
 #SBATCH --time=00-05
-#SBATCH --mem-per-cpu=4096M
-#SBATCH --mem=65536M
+#SBATCH --mem=100G
 
 cd $WRKDIR
 module load miniconda
