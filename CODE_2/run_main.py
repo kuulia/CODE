@@ -42,7 +42,7 @@ def main():
 
     t_0_lumiaro = perf_counter_ns() # store the start time
 
-    #krr_edited_geckoq.main(desc, target, iter=iters)
+    krr_edited_geckoq.main(desc, target, iter=iters)
 
     if (iters == 10): summarizer(desc, target)
     ###############
