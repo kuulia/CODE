@@ -11,7 +11,9 @@ def main():
     ###############
     t_0 = perf_counter_ns() # store starting time of the whole script
     #create new output file (if it exists, it is erased)
-    output_benchmarks = open(f'CODE_2/data/output_benchmarks.txt', 'w+')
+    output_file_path = path.relpath('CODE_2/data/')
+    outputfile = path.join(output_file_path, 'output_benchmarks.txt')
+    output_benchmarks = open(outputfile, 'w+')
     output_benchmarks.close()
     scaling = 1_000_000_000 # used for conversions of powers of 10
 
@@ -40,7 +42,7 @@ def main():
 
     t_0_lumiaro = perf_counter_ns() # store the start time
 
-    krr_edited_geckoq.main(desc, target, iter=iters)
+    #krr_edited_geckoq.main(desc, target, iter=iters)
 
     if (iters == 10): summarizer(desc, target)
     ###############

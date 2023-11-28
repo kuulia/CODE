@@ -6,21 +6,3 @@ Other parameters:
 Kernel used: rbf
 Test size: 414
 Random seed: 12
-
-Training_size: 6000
-
-Training Errors: 
-Training MAE: 0.8331961832039494
-Training r2: 0.7433059544318339
-Training MSE: 1.2348033669465195
-
-Test Errors: 
-Test MAE: 1.064948965893472
-Test r2: 0.5978025642869562
-Test MSE: 2.001207481850531
-
-Optimal parameters: 
-Optimal alpha: 0.01
-Optimal gamma: 0.01
-Best gridsearch score with optimal parameters: -1.0496174184942757
-
