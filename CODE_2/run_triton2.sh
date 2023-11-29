@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --time=00-01
 #SBATCH --cpus-per-task=16
-#SBATCH --mem=1G
+#SBATCH --mem=200G
 
 cd $WRKDIR
 module load miniconda
