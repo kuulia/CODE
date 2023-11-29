@@ -23,16 +23,18 @@ def write_benchmarks(filename, descriptor, runtimes):
     with open(filename, 'a') as f:
         f.writelines(lines)
 
-def summarizer(descriptor, target):
+def summarizer(descriptor, target, dataset):
     random_state = [12,432,5,7543,12343,452,325432435,326,436,2435]
     MAEs = []
-    filepath = path.relpath("CODE_2/data/KRR_output")
-    fileoutname =  path.join(filepath, f'summary_{descriptor}_{target}.txt')
+    filepath = path.relpath("data/KRR_output")
+    fileoutname =  path.join(filepath, f'summary_{descriptor}_{dataset}_{target}.txt')
     outfile = open(fileoutname, 'w+')
     outfile.write(f'Test MAEs for {descriptor} -> {target} were:\n')
     outfile.close() 
     for state in random_state:
-        name_of_file = f'output_KRR_{descriptor}_{target}_{state}.txt'
+        if (dataset == 'geckoq'):
+            name_of_file = f'output_KRR_{descriptor}_{dataset}_{target}_{state}.txt'
+        else: name_of_file = f'output_KRR_{descriptor}_{target}_{state}.txt'
         filename = path.join(filepath, name_of_file)
         file = open(filename, 'r')
         lines = file.readlines()
