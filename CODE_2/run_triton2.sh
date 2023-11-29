@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --time=00-01
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=1G
 
 cd $WRKDIR
