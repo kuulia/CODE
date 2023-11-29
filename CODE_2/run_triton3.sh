@@ -7,7 +7,7 @@ cd $WRKDIR
 module load miniconda
 source activate CODE_2
 cd CODE/CODE_2
-random_state = [12,432,5,7543,12343,452,325432435,326,436,2435]
+
 case $SLURM_ARRAY_TASK_ID in
    0)  SEED=12 ;;
    1)  SEED=432  ;;
