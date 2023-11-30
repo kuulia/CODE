@@ -1,0 +1,26 @@
+Begin KRR training.... 
+
+Training_sizes: [4633, 9267, 13900, 18534, 23167, 27801]
+
+Other parameters: 
+Kernel used: rbf
+Test size: 3836
+Random seed: 12
+
+Training_size: 4633
+
+Training Errors: 
+Training MAE: 0.9747108104744748
+Training r2: 0.6426578878694316
+Training MSE: 1.6386828596416834
+
+Test Errors: 
+Test MAE: 1.0703164697005494
+Test r2: 0.5839925021627131
+Test MSE: 1.9921499077865803
+
+Optimal parameters: 
+Optimal alpha: 0.09999999999999999
+Optimal gamma: 0.01
+Best gridsearch score with optimal parameters: -1.0734770314150202
+
