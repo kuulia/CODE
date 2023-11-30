@@ -1,8 +1,0 @@
-Begin KRR training.... 
-
-Training_sizes: [4633, 9267, 13900, 18534, 23167, 27801]
-
-Other parameters: 
-Kernel used: rbf
-Test size: 3836
-Random seed: 12
