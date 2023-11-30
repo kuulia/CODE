@@ -20,7 +20,7 @@ def main():
     filepath = path.relpath("CODE_2/data")
     #load simpol groups
     simpol_predictions_raw = pd.read_csv(\
-        path.join(filepath, 'lumiaro_processed_finalSG_props_298_uncorrected.csv'))
+        path.join(filepath, 'geckoQ_processed_finalSG_props_298_uncorrected_231123.csv'))
     
     simpol_psat_atm = simpol_predictions_raw['p0']
 
@@ -31,7 +31,7 @@ def main():
     print(f'\nThe predicted saturation vapour pressures are:\n {pred_log_p_sat}')
 
     target_log_p_sat = pd.read_csv(\
-        path.join(filepath, 'log_p_sat.txt'), header=None)
+        path.join(filepath + '/geckoq_all', 'geckoq_log_p_sat.txt'), header=None)
     target_log_p_sat.columns = ['p0']
     print(f'\nThe target saturation vapour pressures are:\n {target_log_p_sat}')
 
