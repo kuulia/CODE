@@ -17,4 +17,4 @@ case $SLURM_ARRAY_TASK_ID in
    4)  SEED=2435 ;;
 esac
 
-srun python slurm/run_main_triton.py $SEED
+srun python run_main_triton.py $SEED
