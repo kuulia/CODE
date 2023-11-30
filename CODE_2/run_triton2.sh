@@ -7,4 +7,4 @@ cd $WRKDIR
 module load miniconda
 source activate CODE_2
 cd CODE/CODE_2
-python run_main.py
+python run_main_triton.py 452 'MACCS_with_simpol'
