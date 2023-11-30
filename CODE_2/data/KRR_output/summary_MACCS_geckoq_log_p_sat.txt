@@ -1,0 +1,2 @@
+Test MAEs for MACCS -> log_p_sat were:
+1.2229632316496015

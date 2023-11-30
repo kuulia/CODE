@@ -9,7 +9,7 @@ import sys
 
 # the main for executing the whole code, Generates the chosen descriptors and
 # runs the KRR script. Generates a summary of the results.
-def main(seed):
+def main(seed, desc):
     ###############
     t_0 = perf_counter_ns() # store starting time of the whole script
     #create new output file (if it exists, it is erased)
@@ -38,15 +38,12 @@ def main(seed):
 
     ###############
     # run KRR model
-    desc = 'MACCS_with_simpol'
     target = 'log_p_sat'
-    iters = 10
 
     t_0_lumiaro = perf_counter_ns() # store the start time
 
     krr_edited_geckoq_triton.main(desc, target, seed)
-
-    if (iters == 10): summarizer(desc, target, 'geckoq')
+    #if (iters == 10): summarizer(desc, target, 'geckoq')
     ###############
     #compute test error values
     ###############
@@ -77,4 +74,4 @@ def main(seed):
     print('The total runtime of the script is: ', runtime_total, ' s\n')
 
 if __name__ == "__main__":
-    main(int(sys.argv[1]))
+    main(int(sys.argv[1]), str(sys.argv[2]))

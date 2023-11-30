@@ -24,7 +24,7 @@ def krr_regr(descriptor, seed):
 
     # training sizes for producing learning curve (in increasing order)
     train_sizes = [4633, 9267, 13900, 18534, 23167, 27801]
-    #train_sizes = [27801]
+    #train_sizes = [46, 92, 139, 185, 500, 1000]
 
     # parameters 
     kernel_used = 'rbf' # kernel used in KRR ('rbf'- Gaussian, 'laplacian'- Laplacian)
