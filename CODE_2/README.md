@@ -5,7 +5,7 @@
 # The aim of this project is to improve the performance and accuracy of the original source code that applies machine learning methods on the data set sourced from Wang et al. (2017)
 # This project is guided and supervised by Prof. Patrick Rinke and Dr. Hilda Sandström from Aalto University, Department of Applied Physics, CEST group
 # Usage of code: run_main.py to run a single script
-# run_main_allmodels.py runs everything 
+# run_main.py generates all descriptors and runs the Kernel Ridge Regression (KRR) 
 # All data files are stored in 'data' folder
 # All model python scripts are stored in 'model_scripts' folder and are accessible as an importable package.
 # funs.py stores auxiliary functions for run_main.py
