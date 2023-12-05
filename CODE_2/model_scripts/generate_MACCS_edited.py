@@ -6,7 +6,7 @@ from rdkit.Chem import MACCSkeys
 
 def main():
 
-	filepath = path.relpath("CODE_2/data")
+	filepath = path.relpath("data")
 	name_of_file = 'all_smiles'
 	filename= path.join(filepath, name_of_file + '.txt')
 	all_smi = open(filename,'r')
@@ -24,7 +24,7 @@ def main():
 			print(np.array(s).shape)
 		i += 1
 		matrix.append(s)
-	fileoutname =  f'../CODE/CODE_2/data/{name_of_file}_MACCS.txt'
+	fileoutname =  f'data/{name_of_file}_MACCS.txt'
 	np.savetxt(fileoutname, matrix, fmt = "%s")
 
 if __name__ == "__main__":

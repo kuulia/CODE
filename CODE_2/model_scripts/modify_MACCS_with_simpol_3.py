@@ -31,7 +31,7 @@ def carbon_numbers(df):
 
 def main():
 
-    filepath = path.relpath("CODE_2/data")
+    filepath = path.relpath("data")
     name_of_file = 'all_smiles_MACCS'
     filename= path.join(filepath, name_of_file + '.txt')
 
@@ -80,7 +80,7 @@ def main():
         maccs_key_to_replace = unused_keys[key]
         maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
         
-    fileoutname =  f'../CODE/CODE_2/data/all_smiles_MACCS_with_simpol.txt'
+    fileoutname =  f'data/all_smiles_MACCS_with_simpol.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
     main()

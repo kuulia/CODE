@@ -1,0 +1,101 @@
+key,in X percent of dataset,Explanation
+11,0.037234883206372284, Does the molecule have a four-membered ring? 
+15,0.003634984353762999, Does the molecule contain a methanetriol? 
+16,0.2211334829471821, Does the molecule have a heteroatom at a 2 bond distance from a ring?  
+19,0.07266807851566204, Is there a seven membered ring?  
+21,6.321711919587824e-05, Does the molecule have a set of doubled-bonded carbons with one carbon bonded to two heteroatoms? 
+22,0.2211334829471821, Does the molecule have a threemembered ring? 
+23,0.0122009040048045, Does the molecule contain an aminomethanediol? 
+24,0.7761165723677972, Is there a single bond between a nitrogen and oxygen?  
+28,0.0014856023011031387, Are there two heteroatoms bonded to the same aliphatic carbon?  
+34,0.0029079874830103994, Is there a doublebonded methylidene group?  
+43,0.06015108891487815," Are there two heteroatoms, both bonded to a hydrogen atom each, who are separated by one atom?  "
+45,0.009640610677371432, Does the molecule have a aminoethylidene group?  
+48,0.6815753706103613, Is there a heteroatoms bonded to three oxygen atoms?  
+49,0.7761165723677972, Does the molecule have atoms with a formal charge?  
+50,0.03214590511110409, Is there an isobutylene group? 
+53,0.31943610329677274," Are there two heteroatoms, both bonded to a hydrogen atom each, who are separated by three atoms?  "
+54,0.1425229952271075," Are there two heteroatoms, both bonded to a hydrogen atom each, who are separated by two atoms?  "
+56,0.15292221133482947, Does the molecule contain dioxyamines?  
+57,0.42187944495369345, Does the molecule contain a heterocycle with oxygen?  
+63,0.7761165723677972, Does the molecule have a nitroxyl group?  
+66,0.4934728324430256, Is there a isobutanyl group bonded to an aliphatic carbon  
+69,0.7486171255175902," Is there a bond between two heteroatoms, one of which has a bond to an hydrogen atom?  "
+70,0.7761165723677972, Are there two heteroatoms that are bonded to the same nitrogen atom?  
+71,0.7761165723677972, Does the molecule have a hydroxylamine group?  
+72,0.974523500964061, Are there two oxygens separated by 2 atoms?  
+74,0.1165091506780036, Are there two methyl groups bonded to the same atom?  
+76,0.05638967032272339, Is there two double bonded carbons where one carbon is bonded to two atoms?  
+79,0.007364794386319816, Are there two nitrogens that are 2 atoms apart?  
+80,0.009956696273350824, Are there two nitrogens that are 3 atoms apart?  
+82,0.1181211872174985, Is there a heteroatom bonded to a methylene and a hydrogen. 
+83,0.1654708094952113, Is there a heteroatom bonded to a ring?  
+89,0.9829629863767109, Are there two oxygens separated by 3 atoms?  
+90,0.26020166261023486, Is there a heteroatom bonded to a hydrogen and separated by two atoms to a methylene?  
+91,0.2548914245977811, Is there a heteroatom bonded to a hydrogen and separated by three atoms to a methylene?  
+92,0.12760375509688024," Is there there a carbon bonded to another carbon, a nitrogen and a oxygen atom?  "
+94,0.7761165723677972, Is there a heteroatom bonded nitrogen atom?  
+95,0.2495811865853273, Is there a nitrogen and oxygen atom separated by two atoms?  
+96,0.1654708094952113, Is there a five membered ring?  
+97,0.7234567120776306, Is there a nitrogen and oxygen atom separated by three atoms?  
+98,0.0060056263236084335, Is there a heteroatom separated by five atoms to a ring?  
+99,0.09166482283402345, Are there two carbons that are double-bonded?  
+101,0.0004425198343711477, Is there an eight membered ring or larger?  
+102,0.973512027056927, Does the molecule have a heteroatom  
+104,0.22239782533109967, Is there a methylene bridge connected to a heteroatom which in turn is bonded to a hydrogen?  
+105,0.04706514524133135, Is there an atom bonded with three ring bonds?  
+106,0.6913424155261245, Is there an atom bonded to three heteroatoms?  
+108,0.08967348357935329, Is there a methyl group separated by four bonds to a methine group?  
+109,0.36653285709770206, Is there an oxygen bonded to an aliphatic carbon?  
+110,0.12810949205044725, Is there a carbon bonded to a nitrogen and an oxygen atom?  
+111,0.13964661630369504," Is there a methylene bridge connected to two atoms, one of which is also bonded to a nitrogen atom?  "
+112,0.7453614438790024, Is there an atom with at least four bonds to other atoms?  
+113,0.0009482567879381737, Is there an oxygen with a non-aromatic bond which is bonded to an atom that has an aromatic bond?  
+114,0.02339033410247495, Is there an ethyl group?  
+115,0.1057622404147043, Is there a methyl group separated by two bonds to a methine group?  
+116,0.19995574801656288, Is there a methyl group separated by three bonds to a methine group?  
+117,0.3458608591206499, Is there a nitrogen and oxygen atom separated by one atom? 
+118,0.06346998767266175, Are there more than one instance two methylenes bonded together?  
+119,0.7761165723677972, Is there a double bonded nitrogen?   
+120,0.1967316749375731, Is there more than one heteroatom in the ring? 
+122,0.7761165723677972, Is there a nitrogen bonded to three atoms?  
+123,0.8262477478901287, Is there a carbon bonded to two oxygens?  
+124,0.973512027056927, Are there two heteroatoms bonded together?  
+126,0.9556847994436893, Is there an oxygen with two non-ring bonds?  
+127,0.4030091348737238, Is there more than one instance of an atom connected to an oxygen atom and that sits in a ring?  
+128,0.08888326958940482, Are there two methylene groups separated by three atoms?  
+129,0.12049182918734393, Are there two methylene groups separated by two atoms?  
+130,0.890476340993141, Is there more than one instance of two heteroatoms bonded together?  
+131,0.7515251130006005, Is there more than one hydrogen atoms bonded to a heteroatoms?  
+132,0.48553908398394285, Is there an oxygen separated  by one atom to an aliphatic carbon?  
+133,0.056737364478300724, Is there an atom connected to an nitrogen atom and that sits in a ring?  
+135,0.00025286847678351296, Is there a nitrogen atom connected via a non-aromatic bond to two atoms bonded by an aromatic bond? 
+136,0.9628915510320195, Is there more than 1 double bonded oxygen?  
+137,0.42187944495369345, Is there an aromatic carbon in a ring?  
+138,0.04576919429781585, Is there a heteroatom bonded to a methylene bridge? 
+139,0.9689920030344217, Is there an hydroxyl group?  
+140,0.9946897619875462, Is there more than three oxygens?  
+141,0.07067673926099188, Is there more than 2 methyl groups?  
+142,0.28589942156335935, Is there more than one nitrogen atom?  
+143,0.4030091348737238, Is there an atom connected to an oxygen atom and that sits in a ring?  
+144,0.000790213989948478, Are there two atoms connected via an aromatic bond that each also are connected to at least one other atom with a non-aromatic bond?  
+145,0.0035401586749691815, Is there more than one six membered ring?  
+146,0.9985460062584948, Is there more than 2 oxygen atom?  
+147,0.06346998767266175, Are there two methylene groups bonded together?  
+148,0.7761165723677972, Is there a heteroatom bonded to three atoms?  
+149,0.19474033568290294, Is there more than one methyl group?  
+150,0.4711255808072826, Is there a bond between two atoms that each have a ring bond?  
+152,0.9741125896892878, Is there a carbon atom bonded to two carbon atoms and one oxygen atom?  
+153,0.36653285709770206, Is there a methylene bridge bonded to a heteroatom?  
+154,0.977178619970288, Is there at least one carbonyl group?  
+155,0.4812719284382211, Is there a methylene bridge connected by to non-ring bonds?  
+156,0.15289060277523153," Is there an atom bonded to three atoms, one of which is a nitrogen?  "
+157,0.9983247463413092, Is there a single bond between a oxygen and carbon?  
+158,0.15292221133482947, Is there a single bond between a nitrogen and carbon?  
+159,0.9998419572020103, Are there more than one oxygen atoms?  
+160,0.5039984827891393, Is there a methyl group?  
+161,0.7761165723677972, Is there a nitrogen atom?  
+162,0.0009482567879381737, Is the molecule aromatic?  
+163,0.06590384676170306, Is there a six membered ring?  
+164,0.9999683914404021, Is there a oxygen atom ?  
+165,0.4722634889528084, Does the molecule have a ring fragment?  

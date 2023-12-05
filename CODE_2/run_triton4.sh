@@ -8,7 +8,7 @@ cd $WRKDIR
 module load miniconda
 source activate CODE_2
 cd CODE/CODE_2
-random_state = [432,5,7543,12343,452]
+
 case $SLURM_ARRAY_TASK_ID in
    0)  SEED=432 ;;
    1)  SEED=5  ;;
@@ -17,4 +17,4 @@ case $SLURM_ARRAY_TASK_ID in
    4)  SEED=452 ;;
 esac
 
-srun python run_main_triton.py $SEED MACCS
+srun python run_main_triton.py $SEED MACCS_with_simpol

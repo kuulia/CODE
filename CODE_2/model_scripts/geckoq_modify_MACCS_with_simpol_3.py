@@ -29,10 +29,10 @@ def carbon_numbers(df):
         carbons[f'C_NO={carbon_no}'] = np.where((df[carbon] == carbon_no), 1, 0)
     return carbons
 
-def main(seed: int):
+def main():
 
-    filepath = path.relpath("CODE_2/data/geckoq_all")
-    filepath_data = path.relpath("CODE_2/data")
+    filepath = path.relpath("data/geckoq_all")
+    filepath_data = path.relpath("data")
     name_of_file = 'geckoq_smiles_MACCS'
     filename= path.join(filepath, name_of_file + '.txt')
 
@@ -81,9 +81,7 @@ def main(seed: int):
         maccs_key_to_replace = unused_keys[key]
         maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
         
-    fileoutname =  f'../CODE/CODE_2/data/geckoq3414/MACCS/geckoq_MACCS_with_simpol_{seed}.txt'
+    fileoutname =  f'data/geckoq3414/MACCS/geckoq_MACCS_with_simpol.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
-	random_seeds = [12,432,5,7543,12343,452,325432435,326,436,2435]
-	for seed in random_seeds:
-		main(seed)
+	main()

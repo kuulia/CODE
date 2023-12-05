@@ -30,7 +30,7 @@ def krr_regr(descriptor, target, seed):
     if (descriptor == 'cm' or descriptor == 'mbtr'): name_of_file = f'all_edited_{descriptor}.txt'
     else: name_of_file = f'all_smiles_{descriptor}.txt'
 
-    filepath = path.relpath("CODE_2/data")
+    filepath = path.relpath("data")
     descriptor_filename = path.join(filepath, name_of_file)  # file of descriptors of the molecules (MBTR, CM, MACCS, Morgan, Topological etc.)
     target_property_filename = path.join(filepath, f'{target}.txt') # target property (p_vap, K_WIOMG, K_WG etc.)
 
@@ -77,7 +77,7 @@ def krr_regr(descriptor, target, seed):
 
 
     # initializing outputfile and writing parameters in it
-    outputfile = open(f'CODE_2/data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt', 'w+')
+    outputfile = open(f'data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt', 'w+')
     outputfile.write("Begin KRR training.... \n\n")
 
     outputfile.write("Training_sizes: " + str(train_sizes) + "\n\n")
@@ -148,7 +148,7 @@ def krr_regr(descriptor, target, seed):
         gamma_opt = grid_search.best_params_.get("gamma")
         alpha_opt = grid_search.best_params_.get("alpha")
 
-        outputfile = open(f'CODE_2/data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt', 'a+')
+        outputfile = open(f'data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt', 'a+')
 
         outputfile.write("\nTraining_size: " + str(train_size) + "\n\n")
 
@@ -178,7 +178,7 @@ def krr_regr(descriptor, target, seed):
     plt.title('Predicted vs. True', fontsize=18)
     ax.set_xlabel('Reference', fontsize=18)
     ax.set_ylabel('Predicted', fontsize=18)
-    fig.savefig(f'CODE_2/data/plots/{descriptor}/plot_regr_{descriptor}_{target}_{seed}.png')
+    fig.savefig(f'data/plots/{descriptor}/plot_regr_{descriptor}_{target}_{seed}.png')
 
 
 
@@ -188,7 +188,7 @@ def krr_regr(descriptor, target, seed):
     plt.title('Learning Curve', fontsize=18)
     ax.set_xlabel('Train Size', fontsize=18)
     ax.set_ylabel('MAE', fontsize=18)
-    fig.savefig(f'CODE_2/data/plots/plot_learn_curve_{descriptor}_{target}_{seed}.png')
+    fig.savefig(f'data/plots/plot_learn_curve_{descriptor}_{target}_{seed}.png')
 
 if __name__ == "__main__":
     main()

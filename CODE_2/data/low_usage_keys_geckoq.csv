@@ -1,0 +1,69 @@
+,Explanation
+0, empty key
+1, Are there isotopes 
+2, Is there an atom with an atomic number above 103?  
+3," Are there atoms belonging to groups IVa, Va, Via, rows 4-6? "
+4, Is there an actinide in the molecule?  
+5, Does the molecule contain atoms from group IIIB or IVB? 
+6, Does the molecule contain lanthanides? 
+7," Does the molecule contain atoms from group VB, VIB or VIIB? "
+8, Is there a heteroatom at a 3 bond distance from a ring fragment?  
+9, Is there an atom from Group VIII? 
+10, Is there an atom from Group IIa? 
+12," Is there an atom from Group IB, IIB? "
+13, Does the molecule contain a hydroxylamine-derivative? 
+14, Does the molecule have a disulfide bond?  
+17, Does the molecule have 2 triplebonded carbons?  
+18, Is there an atom from Group VIII? 
+20, Is there an silicon atom? 
+21, Does the molecule have a set of doubled-bonded carbons with one carbon bonded to two heteroatoms? 
+25, Does the molecule contain an methanetriamine? FRAGMENT GROUP 
+26, Is there a double-bonded carbon that has three ring bond?  
+27, Is there an iodine atom? 
+29, Is there an phosphor atom? 
+30, Is there a heteroatom at bonded to four atoms three of which are carbons?  
+31, Does the molecule have any heteroatom bonded to a halogen  
+32, Does the molecule have a aminothiomethane group?  
+33, Is there any bond between nitrogen and sulphur?  
+35, Is there alkali metal? 
+36, Is there a sulphur containing heterocycle? 
+37, Does the molecule have a diaminocarbinol group?  
+38, Does the molecule have a diaminoethyl group?  
+39, Is there a sulphur atom bonded to three oxygens?  
+40, Does the molecule have a thioperoxide (single bond between a sulphur and oxygen atom)? 
+41, Does the molecule have a cyano group?  
+42, Is there an flourine atom? 
+44," Are there any atoms other than H, C, N, O, Si, P, S, F, Cl, Br, and I? "
+46, Is there a bromine atom?  
+47, Is there sulphur separated by two bonds to nitrogen?  
+51, Is there a carbon bonded to sulphur to an oxygen?  
+52, Are there two nitrogens bonded together?  
+55, Is there a sulphur bonded to two oxygens?  
+58, Is there a sulphur atom bonded to two heteroatoms?  
+59, Is the molecule lacking sulphur atoms?  
+60, Does the molecule contain a double bond between a sulphur and oxygen atom?  
+61, Is there a sulphur atom bonded to three atoms?  
+62, Are there two rings separated by a bond?  
+64, Is there a carbon connected to an atom in a ring?  
+65, Is there an aromatic nitrogen or carbon?  
+67, Is there a heteroatom bonded to sulphur atom?  
+68," Are there two bonded heteroatoms, both bonded to a hydrogen atom? "
+73, Does the molecule have a double bonded sulphur?  
+75, Is there a nitrogen in a ring that is connected to an atom outside the ring?  
+77, Are there two nitrogens bonded to the same atom?  
+78, Is there a nitrogen double bonded to a carbon? 
+81," Is there an atom with three bonds, one of which is connected to a sulphur atom?  "
+84, Does the molecule have a primary amine?  
+85, Is there a nitrogen bonded to three carbons?  
+86, Are there two methylene groups bonded to the same heteroatom?  
+87, Is there a halide bonded to a ring?  
+88, Is there a sulphur atom?  
+93, Is there a heteroatom bonded to a methyl group?  
+100, Is there a methylene bridge directly connected to a nitrogen atom?  
+103, Is there a chlorine atom?  
+107," Is there and atom with three bonds, one of which is to a halogen?  "
+121, Is there a nitrogen containing ring?  
+125, Is there more than one aromatic ring?  
+134, Is there a halogen atom? 
+151, Is there a nitrogen bonded to at least one hydrogen?  
+166, Does the molecule have more than one fragments? 

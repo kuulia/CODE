@@ -38,7 +38,6 @@ def summarizer(descriptor, target, dataset):
         filename = path.join(filepath, name_of_file)
         file = open(filename, 'r')
         lines = file.readlines()
-        print(len(lines))
         MAE = lines[107].removeprefix('Test MAE: ')
         outfile = open(fileoutname, 'a')
         outfile.write(MAE)
