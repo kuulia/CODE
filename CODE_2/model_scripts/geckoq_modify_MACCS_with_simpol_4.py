@@ -23,8 +23,8 @@ def multiple_groups(df):
 
 def binary_encoded(df, element: str, name: str):
     bin_enc = pd.DataFrame()
-    for i in range(0,5):
-        bin_enc[f'{name}_bit{i+1}'] = df[element].apply(np.binary_repr, width = 5)\
+    for i in range(0,6):
+        bin_enc[f'{name}_bit{i+1}'] = df[element].apply(np.binary_repr, width = 6)\
             .map(lambda v: v[i])
     return bin_enc
 

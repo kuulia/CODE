@@ -23,13 +23,13 @@ def krr_regr(descriptor, seed):
     target_property_filename = path.join(filepath, f'{target}.txt') # target property (p_vap, K_WIOMG, K_WG etc.)
 
     # training sizes for producing learning curve (in increasing order)
-    train_sizes = [4633, 9267, 13900, 18534, 23167, 27801]
-    #train_sizes = [46, 92, 139, 185, 500, 1000]
+    #train_sizes = [4633, 9267, 13900, 18534, 23167, 27801]
+    train_sizes = [46, 92, 139, 185, 500, 1000]
 
     # parameters 
     kernel_used = 'rbf' # kernel used in KRR ('rbf'- Gaussian, 'laplacian'- Laplacian)
-    test_size = 3836 # size of test set 
-    #test_size = 383 # size of test set 
+    #test_size = 3836 # size of test set 
+    test_size = 383 # size of test set 
     random_seed = seed 
     cv = 5 # number of folds for KRR crossvalidation
 
