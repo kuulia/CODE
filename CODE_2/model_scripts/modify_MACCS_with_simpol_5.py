@@ -23,8 +23,8 @@ def multiple_groups(df):
 
 def binary_encoded(df, element: str, name: str):
     bin_enc = pd.DataFrame()
-    for i in range(0,6):
-        bin_enc[f'{name}_bit{i+1}'] = df[element].apply(np.binary_repr, width = 6)\
+    for i in range(0,5):
+        bin_enc[f'{name}_bit{i+1}'] = df[element].apply(np.binary_repr, width = 5)\
             .map(lambda v: v[i])
     return bin_enc
 
@@ -39,16 +39,16 @@ def more_than_four(df):
 
 def main():
 
-    filepath = path.relpath("data/geckoq_all")
-    filepath_data = path.relpath("data")
-    name_of_file = 'geckoq_smiles_MACCS'
+    filepath = path.relpath("data")
+    name_of_file = 'all_smiles_MACCS'
     filename= path.join(filepath, name_of_file + '.txt')
 
     data = pd.read_csv(filename, header=None, sep=' ')
     #print(data)
     
     #load unused keys
-    unused_keys_raw = pd.read_csv(path.join(filepath_data, 'unused_keys_geckoq.csv'))
+    unused_keys_raw = pd.read_csv(path.join(filepath, 'unused_keys.csv'))
+    #add MACCS keys that ask for oxygen count
     unused_keys_raw.loc[len(unused_keys_raw)] = 146
     unused_keys_raw.loc[len(unused_keys_raw)] = 159
     unused_keys_raw.loc[len(unused_keys_raw)] = 164
@@ -57,17 +57,18 @@ def main():
 
     #load simpol groups
     data_simpol_raw = pd.read_csv(path.join(filepath, \
-                                            'geckoq_simpol_norings_groups.csv'))
+                                            'all_smiles_simpol_norings_groups.csv'))
     #print(data_simpol_raw)
 
-    potential_simpol_groups = pd.read_csv(path.join(filepath_data, \
-                                                    'potential_simpol_groups_geckoq.csv'))
+    potential_simpol_groups = pd.read_csv(path.join(filepath, \
+                                                    'potential_simpol_groups.csv'))
     groups = list(potential_simpol_groups['Compound'])
-
+    
     #print(potential_simpol_groups)
     #print(groups)
 
     data_simpol = data_simpol_raw[groups]
+    #print(data_simpol)
     
     #create simpol fingerprint
     simpol_fp = generate_simpol_fingerprint(data_simpol)
@@ -98,8 +99,7 @@ def main():
     for key, group in enumerate(groups):
         maccs_key_to_replace = unused_keys[key]
         maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
-        
-    fileoutname =  f'data/geckoq_all/{name_of_file}_MACCS.txt'
+    fileoutname =  f'data/all_smiles_MACCS_with_simpol.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
-	main()
+    main()
