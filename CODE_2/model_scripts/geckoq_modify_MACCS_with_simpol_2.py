@@ -72,7 +72,7 @@ def main():
     #print(maccs_with_simpol)
 
 
-    fileoutname =  f'../CODE/CODE_2/data/geckoq3414/MACCS/geckoq_MACCS_with_simpol.txt'
+    fileoutname =  f'data/geckoq_all/{name_of_file}_MACCS.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
 	main()

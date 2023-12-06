@@ -19,8 +19,7 @@ def multiple_groups(df):
                                                   & (df[group] <= 4), 1, 0)
     two_to_four_groups = two_to_four_groups.\
             loc[:, (two_to_four_groups != 0).any(axis=0)] #remove zero-columns
-    fp_out = two_to_four_groups
-    return fp_out
+    return two_to_four_groups
 
 def carbon_numbers(df):
     carbon = 'carbon number'
@@ -81,7 +80,7 @@ def main():
         maccs_key_to_replace = unused_keys[key]
         maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
         
-    fileoutname =  f'data/geckoq3414/MACCS/geckoq_MACCS_with_simpol.txt'
+    fileoutname =  f'data/geckoq_all/{name_of_file}_MACCS.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
 	main()

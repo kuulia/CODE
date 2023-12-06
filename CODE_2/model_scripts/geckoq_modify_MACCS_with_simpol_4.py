@@ -6,7 +6,7 @@ def generate_simpol_fingerprint(df):
     fingerprint = pd.DataFrame()
     simpol_groups = df.columns
     for group in simpol_groups:
-        if (group != 'carbon number'):
+        if (group != 'carbon number' and group != 'oxygen count'):
             fingerprint[group] = np.where(df[group] >= 1, 1, 0)
     return fingerprint
 
@@ -14,13 +14,12 @@ def multiple_groups(df):
     simpol_groups = df.columns
     two_to_four_groups = pd.DataFrame()
     for group in simpol_groups:
-        if (group != 'carbon number'):
+        if (group != 'carbon number' and group != 'oxygen count'):
             two_to_four_groups[f'({group})_2-4'] = np.where((df[group] >= 2)\
                                                   & (df[group] <= 4), 1, 0)
     two_to_four_groups = two_to_four_groups.\
             loc[:, (two_to_four_groups != 0).any(axis=0)] #remove zero-columns
-    fp_out = two_to_four_groups
-    return fp_out
+    return two_to_four_groups
 
 def binary_encoded(df, element: str, name: str):
     bin_enc = pd.DataFrame()
@@ -28,13 +27,6 @@ def binary_encoded(df, element: str, name: str):
         bin_enc[f'{name}_bit{i+1}'] = df[element].apply(np.binary_repr, width = 5)\
             .map(lambda v: v[i])
     return bin_enc
-
-#def carbon_numbers(df):
-#    carbon = 'carbon number'
-#    carbons = pd.DataFrame()
-#    for carbon_no in range(np.min(df[carbon]), np.max(df[carbon]) + 1):
-#        carbons[f'C_NO={carbon_no}'] = np.where((df[carbon] == carbon_no), 1, 0)
-#    return carbons
 
 def main():
 
@@ -76,7 +68,10 @@ def main():
         groups.append(new_group)
     for carbon in carbons.columns:
         groups.append(carbon)
+    for oxygen in oxygens.columns:
+        groups.append(oxygen)
     groups.remove('carbon number')
+    groups.remove('oxygen count')
     #replace unused MACCS keys with simpol fingerprints
     #print(groups)
 
@@ -88,7 +83,7 @@ def main():
         maccs_key_to_replace = unused_keys[key]
         maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
         
-    fileoutname =  f'data/geckoq3414/MACCS/geckoq_MACCS_with_simpol.txt'
+    fileoutname =  f'data/geckoq_all/{name_of_file}_MACCS.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
 	main()
