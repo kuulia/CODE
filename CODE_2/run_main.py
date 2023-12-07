@@ -30,7 +30,8 @@ def main():
     #modify_MACCS_with_simpol_1.main()
     #modify_MACCS_with_simpol_2.main()
     #modify_MACCS_with_simpol_3.main()
-    modify_MACCS_with_simpol_4.main()
+    #modify_MACCS_with_simpol_4.main()
+    modify_MACCS_with_simpol_5.main()
     #gridsearch_loop.main(1.0)  #not working currently<
 
     t_end_precomps = perf_counter_ns() # store the end time of precomputations
@@ -39,7 +40,7 @@ def main():
     ###############
     # run KRR model
     desc = 'MACCS_with_simpol'
-    target = 'kwiomg'
+    target = 'kwg'
     iters = 10
 
     t_0_lumiaro = perf_counter_ns() # store the start time
