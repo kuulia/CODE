@@ -49,9 +49,11 @@ def main():
     
     #load unused keys
     unused_keys_raw = pd.read_csv(path.join(filepath_data, 'unused_keys_geckoq.csv'))
-    unused_keys_raw.loc[len(unused_keys_raw)] = 146
-    unused_keys_raw.loc[len(unused_keys_raw)] = 159
-    unused_keys_raw.loc[len(unused_keys_raw)] = 164
+    #add MACCS keys that ask for oxygen count
+    unused_keys_raw.loc[len(unused_keys_raw)] = 140 #Is there more than three oxygens?  
+    unused_keys_raw.loc[len(unused_keys_raw)] = 146 #Is there more than 2 oxygen atom?
+    unused_keys_raw.loc[len(unused_keys_raw)] = 159 #Are there more than one oxygen atoms?  
+    unused_keys_raw.loc[len(unused_keys_raw)] = 164 #Is there a oxygen atom ?  
     unused_keys = unused_keys_raw['key']
     #print(unused_keys)
 
@@ -94,12 +96,14 @@ def main():
     all_simpol = all_simpol.join(carbons)
     all_simpol = all_simpol.join(oxygens)
     all_simpol = all_simpol.join(simpol_fp_four_plus)
+    print(all_simpol.columns)
+    print(groups)
     maccs_with_simpol = data
     for key, group in enumerate(groups):
         maccs_key_to_replace = unused_keys[key]
         maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
         
-    fileoutname =  f'data/geckoq_all/{name_of_file}_MACCS.txt'
+    fileoutname =  f'data/geckoq_all/{name_of_file}_with_simpol.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
 	main()

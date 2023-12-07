@@ -49,9 +49,10 @@ def main():
     #load unused keys
     unused_keys_raw = pd.read_csv(path.join(filepath, 'unused_keys.csv'))
     #add MACCS keys that ask for oxygen count
-    unused_keys_raw.loc[len(unused_keys_raw)] = 146
-    unused_keys_raw.loc[len(unused_keys_raw)] = 159
-    unused_keys_raw.loc[len(unused_keys_raw)] = 164
+    unused_keys_raw.loc[len(unused_keys_raw)] = 140 #Is there more than three oxygens?  
+    unused_keys_raw.loc[len(unused_keys_raw)] = 146 #Is there more than 2 oxygen atom?
+    unused_keys_raw.loc[len(unused_keys_raw)] = 159 #Are there more than one oxygen atoms?  
+    unused_keys_raw.loc[len(unused_keys_raw)] = 164 #Is there a oxygen atom ?  
     unused_keys = unused_keys_raw['key']
     #print(unused_keys)
 

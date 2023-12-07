@@ -80,7 +80,7 @@ def main():
         maccs_key_to_replace = unused_keys[key]
         maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
         
-    fileoutname =  f'data/geckoq_all/{name_of_file}_MACCS.txt'
+    fileoutname =  f'data/geckoq_all/{name_of_file}_with_simpol.txt'
     np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
 	main()
