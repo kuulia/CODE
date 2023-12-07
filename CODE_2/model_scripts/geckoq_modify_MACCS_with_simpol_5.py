@@ -96,8 +96,6 @@ def main():
     all_simpol = all_simpol.join(carbons)
     all_simpol = all_simpol.join(oxygens)
     all_simpol = all_simpol.join(simpol_fp_four_plus)
-    print(all_simpol.columns)
-    print(groups)
     maccs_with_simpol = data
     for key, group in enumerate(groups):
         maccs_key_to_replace = unused_keys[key]
