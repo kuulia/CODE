@@ -96,13 +96,7 @@ def main():
     all_simpol = all_simpol.join(carbons)
     all_simpol = all_simpol.join(oxygens)
     all_simpol = all_simpol.join(simpol_fp_four_plus)
-    all_simpol.to_csv('data/geckoq_all/simpol_fp_geckoq_final.csv')
-    maccs_with_simpol = data
-    for key, group in enumerate(groups):
-        maccs_key_to_replace = unused_keys[key]
-        maccs_with_simpol.iloc[:, maccs_key_to_replace] = all_simpol[group]
-        
     fileoutname =  f'data/geckoq_all/{name_of_file}_with_simpol.txt'
-    np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
+    np.savetxt(fileoutname, all_simpol, fmt = "%s")
 if __name__ == "__main__":
 	main()
