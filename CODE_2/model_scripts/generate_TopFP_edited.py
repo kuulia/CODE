@@ -8,7 +8,7 @@ from os import path
 def main():
 
 	filepath = path.relpath("CODE_2/data")
-	name_of_file = 'all_smiles'
+	name_of_file = 'geckoq_smiles'
 	filename= path.join(filepath, name_of_file + '.txt')
 	all_smi = open(filename,'r')
 

@@ -59,7 +59,7 @@ def main():
 
     #load simpol groups
     data_simpol_raw = pd.read_csv(path.join(filepath, \
-                                            'geckoq_simpol_norings_groups.csv'))
+                                            'geckoq_simpol_all_groups.csv'))
     #print(data_simpol_raw)
 
     potential_simpol_groups = pd.read_csv(path.join(filepath_data, \

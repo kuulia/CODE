@@ -53,17 +53,23 @@ def main():
     unused_keys_raw.loc[len(unused_keys_raw)] = 146 #Is there more than 2 oxygen atom?
     unused_keys_raw.loc[len(unused_keys_raw)] = 159 #Are there more than one oxygen atoms?  
     unused_keys_raw.loc[len(unused_keys_raw)] = 164 #Is there a oxygen atom ?  
+    #remove hydroxyl (included in SIMPOL)
+    unused_keys_raw.loc[len(unused_keys_raw)] = 139 #Is there an hydroxyl group?  
+    #keys that appeared only once
+    unused_keys_raw.loc[len(unused_keys_raw)] = 100 #Is there a methylene bridge directly connected to a nitrogen atom?  
+    unused_keys_raw.loc[len(unused_keys_raw)] = 17 #Does the molecule have 2 triplebonded carbons?  
     unused_keys = unused_keys_raw['key']
-    #print(unused_keys)
+    print(unused_keys)
 
     #load simpol groups
     data_simpol_raw = pd.read_csv(path.join(filepath, \
-                                            'all_smiles_simpol_norings_groups.csv'))
+                                            'all_smiles_simpol_all_groups.csv'))
     #print(data_simpol_raw)
 
     potential_simpol_groups = pd.read_csv(path.join(filepath, \
                                                     'potential_simpol_groups.csv'))
     groups = list(potential_simpol_groups['Compound'])
+    groups.remove('zeroeth group')
     
     #print(potential_simpol_groups)
     #print(groups)
@@ -96,6 +102,8 @@ def main():
     all_simpol = all_simpol.join(carbons)
     all_simpol = all_simpol.join(oxygens)
     all_simpol = all_simpol.join(simpol_fp_four_plus)
+    all_simpol.to_csv('data/all_smiles_simpol_fp.csv')
+    print(all_simpol)
     maccs_with_simpol = data
     for key, group in enumerate(groups):
         maccs_key_to_replace = unused_keys[key]

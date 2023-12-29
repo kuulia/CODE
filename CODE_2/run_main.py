@@ -32,7 +32,6 @@ def main():
     #modify_MACCS_with_simpol_3.main()
     #modify_MACCS_with_simpol_4.main()
     modify_MACCS_with_simpol_5.main()
-    #gridsearch_loop.main(1.0)  #not working currently<
 
     t_end_precomps = perf_counter_ns() # store the end time of precomputations
     runtime_precomps = (t_end_precomps - t_0) // scaling
