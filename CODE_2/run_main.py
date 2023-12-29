@@ -20,61 +20,61 @@ def main():
 
     # run precomputations before benchmarking, loading the models etc
     #descs = ['cm', 'mbtr', 'MACCS', 'Morgan', 'TopFP', 'MACCS_with_simpol']
-    #targets = ['log_p_sat', 'kwiomg', 'kwg']
+    targets = ['log_p_sat', 'kwiomg', 'kwg']
 
     #generate_cm_edited.main(), 
     #generate_mbtr_edited.main()
-    generate_MACCS_edited.main()
+    #generate_MACCS_edited.main()
     #generate_Morgan_edited.main()
     #generate_TopFP_edited.main()
     #modify_MACCS_with_simpol_1.main()
     #modify_MACCS_with_simpol_2.main()
     #modify_MACCS_with_simpol_3.main()
     #modify_MACCS_with_simpol_4.main()
-    modify_MACCS_with_simpol_5.main()
+    #modify_MACCS_with_simpol_5.main()
 
     t_end_precomps = perf_counter_ns() # store the end time of precomputations
     runtime_precomps = (t_end_precomps - t_0) // scaling
 
     ###############
     # run KRR model
-    desc = 'MACCS_with_simpol'
-    target = 'kwg'
-    iters = 10
+    for target in targets:
+        desc = 'MACCS_with_simpol'
+        iters = 10
 
-    t_0_lumiaro = perf_counter_ns() # store the start time
+        t_0_lumiaro = perf_counter_ns() # store the start time
 
-    krr_edited.main(desc, target, iter=iters)
+        krr_edited.main(desc, target, iter=iters)
 
-    if (iters == 10): summarizer(desc, target, 'lumiaro')
-    ###############
-    #compute test error values
-    ###############
-    t_end_lumiaro = perf_counter_ns() # store the end time of lumiaro code
-    runtime_lumiaro = (t_end_lumiaro - t_0_lumiaro) // scaling # compute runtime in seconds
+        if (iters == 10): summarizer(desc, target, 'lumiaro')
+        ###############
+        #compute test error values
+        ###############
+        t_end_lumiaro = perf_counter_ns() # store the end time of lumiaro code
+        runtime_lumiaro = (t_end_lumiaro - t_0_lumiaro) // scaling # compute runtime in seconds
 
-    ###############
-    t_0_improved = perf_counter_ns()
+        ###############
+        t_0_improved = perf_counter_ns()
 
-    # run improved code
-    
-    ###############
-    #compute test error values
-    ###############
-    t_end_improved = perf_counter_ns()
-    runtime_improved = (t_end_improved - t_0_improved) // scaling
-    ###############
+        # run improved code
+        
+        ###############
+        #compute test error values
+        ###############
+        t_end_improved = perf_counter_ns()
+        runtime_improved = (t_end_improved - t_0_improved) // scaling
+        ###############
 
-    runtime_total = (t_end_improved - t_0) // scaling #calculate the total runtime of the code, in seconds
-    runtimes = [runtime_precomps, runtime_lumiaro, runtime_improved, runtime_total]
-    
-    output_filename = path.join(filepath, 'output_benchmarks.txt')
-    write_benchmarks(output_filename, desc, runtimes)
-    #print runtime results
-    print('\nThe runtime of generating descriptors is: ', runtime_precomps, ' ms \n')
-    print('The runtime of the original lumiaro code is: ', runtime_lumiaro, ' s \n')
-    print('The runtime of the improved code is: ', runtime_improved, ' s\n')
-    print('The total runtime of the script is: ', runtime_total, ' s\n')
+        runtime_total = (t_end_improved - t_0) // scaling #calculate the total runtime of the code, in seconds
+        runtimes = [runtime_precomps, runtime_lumiaro, runtime_improved, runtime_total]
+        
+        output_filename = path.join(filepath, 'output_benchmarks.txt')
+        write_benchmarks(output_filename, desc, runtimes)
+        #print runtime results
+        print('\nThe runtime of generating descriptors is: ', runtime_precomps, ' ms \n')
+        print('The runtime of the original lumiaro code is: ', runtime_lumiaro, ' s \n')
+        print('The runtime of the improved code is: ', runtime_improved, ' s\n')
+        print('The total runtime of the script is: ', runtime_total, ' s\n')
 
 if __name__ == "__main__":
     clearvars()
