@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from os import path 
 
 def results(descriptor, target, seed, folder):
@@ -59,11 +60,12 @@ def calc_mean(descriptor, target, folder):
 calc_mean('MACCS_with_simpol', 'log_p_sat', 'maccs and simple simpol')
 random_state = [12,432,5,7543,12343,452,325432435,326,436,2435]
 targets = ['log_p_sat', 'kwg', 'kwiomg']
-folders = ['maccs and simple simpol', 'maccs and simpol with multiple groups', \
+folders = ['simpol with encodings', 'maccs and simple simpol', \
+        'maccs and simpol with multiple groups', \
         'maccs and simpol with multiple groups and carbon numbers', \
         'maccs and norings simpol with binary encodings', \
         'maccs and norings simpol with binary encodings and four plus groups', \
-        'maccs and simpol final model', 'simpol with encodings']
+        'maccs and simpol final model']
 for folder in folders:
     for target in targets:
         for state in random_state:
@@ -79,4 +81,105 @@ for target in targets:
     for state in random_state:
         results('simpol', target, state, 'simpol only')
     calc_mean('simpol', target, 'simpol only')
-    
+
+#geckoq
+for folder in folders:
+    if (folder != 'simpol with encodings' and folder != 'maccs and simple simpol' \
+        and folder != 'maccs and simpol with multiple groups' and folder != 'maccs and simpol final model'): #wait for triton
+        for state in random_state:
+            results('MACCS_with_simpol_geckoq', 'log_p_sat', state, folder)
+        calc_mean('MACCS_with_simpol_geckoq', 'log_p_sat', folder)
+
+for state in random_state:
+    results('MACCS_geckoq', 'log_p_sat', state, 'maccs only')
+calc_mean('MACCS_geckoq', 'log_p_sat', 'maccs only')
+
+for state in random_state:
+    results('simpol_fp_geckoq', 'log_p_sat', state, 'simpol only')
+calc_mean('simpol_fp_geckoq', 'log_p_sat', 'simpol only')
+
+#plotting
+for folder in folders:
+    for target in targets:
+        filepath = path.relpath(f'data/KRR_output/{folder}/results')
+        input_file = path.join(filepath,\
+                            f'mean_MACCS_with_simpol_{target}.csv')
+        data = pd.read_csv(input_file)
+        print(data)
+        # Plot learning curve
+        fig, ax = plt.subplots()
+        ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
+        plt.title('Learning Curve', fontsize=18)
+        ax.set_xlabel('Train Size', fontsize=18)
+        ax.set_ylabel('MAE', fontsize=18)
+        fig.savefig(f'{filepath}/plots/plot_learn_curve_MACCS_with_simpol_{target}.png')
+        plt.close()
+
+for target in targets:
+    # Plot learning curve       
+    fig, ax = plt.subplots()
+    data = pd.read_csv(f'data/KRR_output/maccs only/results/mean_MACCS_{target}.csv')
+    ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
+    for folder in folders[0:4]:
+        filepath = path.relpath(f'data/KRR_output/{folder}/results')
+        input_file = path.join(filepath,\
+                            f'mean_MACCS_with_simpol_{target}.csv')
+        data = pd.read_csv(input_file)
+        print(data)
+        ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
+    legends = ['MACCS fingerprint', 'SIMPOL fingerprint', 'MACCS & SIMPOL (1)', \
+               'MACCS & SIMPOL (2)', 'MACCS & SIMPOL (3)']
+    ax.legend(legends)  
+    ax.set_xlabel('Train Size', fontsize=18)
+    ax.set_ylabel('MAE', fontsize=18)
+    plt.title('Learning Curve', fontsize=18)
+    plt.close()
+    outpath = path.relpath(f'data/plots/final')
+    fig.savefig(f'{outpath}/plot_learn_curves_1-4_with_simpol_{target}.png')
+for target in targets:
+    # Plot learning curve       
+    fig, ax = plt.subplots()
+    for folder in folders[4:]:
+        filepath = path.relpath(f'data/KRR_output/{folder}/results')
+        input_file = path.join(filepath,\
+                            f'mean_MACCS_with_simpol_{target}.csv')
+        data = pd.read_csv(input_file)
+        print(data)
+        ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
+    legends = ['MACCS & SIMPOL (4)', 'MACCS & SIMPOL (5)', 'MACCS & SIMPOL (6)']
+    ax.legend(legends)  
+    ax.set_xlabel('Train Size', fontsize=18)
+    ax.set_ylabel('MAE', fontsize=18)
+    plt.title('Learning Curve', fontsize=18)
+    plt.close()
+    outpath = path.relpath(f'data/plots/final')
+    fig.savefig(f'{outpath}/plot_learn_curves_5-8_with_simpol_{target}.png')
+
+
+#geckoq
+    folders_geckoq = [
+        'maccs and simpol with multiple groups and carbon numbers', \
+        'maccs and norings simpol with binary encodings', \
+        'maccs and norings simpol with binary encodings and four plus groups']
+# Plot learning curve       
+fig, ax = plt.subplots()
+data = pd.read_csv(f'data/KRR_output/maccs only/results/mean_MACCS_geckoq_log_p_sat.csv')
+ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
+for folder in folders_geckoq:
+    filepath = path.relpath(f'data/KRR_output/{folder}/results')
+    input_file = path.join(filepath,\
+                        f'mean_MACCS_with_simpol_geckoq_log_p_sat.csv')
+    data = pd.read_csv(input_file)
+    print(data)
+    ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
+legends = ['MACCS fingerprint', 'MACCS & SIMPOL (4)', 'MACCS & SIMPOL (5)', \
+           'MACCS & SIMPOL (6)']
+ax.legend(legends)  
+ax.set_xlabel('Train Size', fontsize=18)
+ax.set_ylabel('MAE', fontsize=18)
+plt.title('Learning Curve', fontsize=18)
+plt.close()
+outpath = path.relpath(f'data/plots/final')
+fig.savefig(f'{outpath}/plot_geckoq_learn_curves_1-4_with_simpol_log_p_sat.png')
+# Plot learning curve       
+fig, ax = plt.subplots()
