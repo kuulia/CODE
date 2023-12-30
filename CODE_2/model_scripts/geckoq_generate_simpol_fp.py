@@ -59,7 +59,7 @@ def main():
 
     #load simpol groups
     data_simpol_raw = pd.read_csv(path.join(filepath, \
-                                            'geckoq_simpol_norings_groups.csv'))
+                                            'geckoq_simpol_all_groups.csv'))
     #print(data_simpol_raw)
 
     potential_simpol_groups = pd.read_csv(path.join(filepath_data, \
@@ -96,7 +96,8 @@ def main():
     all_simpol = all_simpol.join(carbons)
     all_simpol = all_simpol.join(oxygens)
     all_simpol = all_simpol.join(simpol_fp_four_plus)
+    maccs_with_simpol = all_simpol
     fileoutname =  f'data/geckoq_all/{name_of_file}_with_simpol.txt'
-    np.savetxt(fileoutname, all_simpol, fmt = "%s")
+    np.savetxt(fileoutname, maccs_with_simpol, fmt = "%s")
 if __name__ == "__main__":
 	main()
