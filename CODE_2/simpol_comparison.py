@@ -1,3 +1,5 @@
+#Author: Linus Lind Jan. 2024
+#GNU General Public License v3.0
 import pandas as pd
 import numpy as np
 import math
@@ -20,14 +22,14 @@ def main():
     filepath = path.relpath("CODE_2/data")
     #load simpol groups
     simpol_predictions_raw = pd.read_csv(\
-        path.join(filepath, 'geckoQ_processed_finalSG_props_298_231123.csv'))
+        path.join(filepath, 'geckoQ_processed_finalSG_props_298_uncorrected_231123.csv'))
     
     simpol_psat_atm = simpol_predictions_raw['p0']
 
     pred_log_p_sat = pd.DataFrame()
     pred_log_p_sat['p0'] = atm_to_log_kpa(simpol_psat_atm)
 
-    pred_log_p_sat.to_csv('CODE_2/data/simpol_corrected_log_p_sat.txt', index=None, header=False)
+    pred_log_p_sat.to_csv('CODE_2/data/simpol_uncorrected_log_p_sat.txt', index=None, header=False)
     print(f'\nThe predicted saturation vapour pressures are:\n {pred_log_p_sat}')
 
     target_log_p_sat = pd.read_csv(\

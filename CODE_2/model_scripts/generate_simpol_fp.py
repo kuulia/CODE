@@ -1,3 +1,6 @@
+#Author: Linus Lind Jan. 2024
+#LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
+#Generates SIMPOL fingerprint of binary encoded SIMPOL functional group counts 
 import numpy as np
 import pandas as pd
 from os import path

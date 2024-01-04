@@ -1,3 +1,8 @@
+#Author: Emma Lumiaro as part of Lumiaro et al. (2021) https://doi.org/10.5194/acp-21-13227-2021
+#Edited by Linus Lind Jan. 2024 as part of a Bachelor's thesis. Changes include
+#but not limited to:
+#filepath organization & code refactoring
+#LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
 from rdkit import DataStructs
 from rdkit import Chem
 import numpy as np
@@ -8,7 +13,7 @@ from os import path
 def main():
 
 	filepath = path.relpath("CODE_2/data")
-	name_of_file = 'geckoq_smiles'
+	name_of_file = 'all_smiles'
 	filename= path.join(filepath, name_of_file + '.txt')
 	all_smi = open(filename,'r')
 

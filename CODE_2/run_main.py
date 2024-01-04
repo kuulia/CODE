@@ -1,3 +1,5 @@
+#Author: Linus Lind Jan. 2024
+#LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
 from time import perf_counter_ns
 from os import path
 from os import getcwd
