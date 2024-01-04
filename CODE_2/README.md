@@ -13,7 +13,7 @@
 # All model python scripts are stored in 'model_scripts' folder and are accessible as an importable package.
 # generate_X.py scripts create molecular descriptors from SMILES strings
 # krr_X.py scripts run a Kernel Ridge Regression machine learning model 
-# geckoq_modify
+# modify_X.py and geckoq_modify_X scripts modify MACCS fingerprint with SIMPOL group binary encodings 
 # funs.py stores auxiliary functions for run_main.py
 # testing.py is for various sanity checks and may be ignored
 # results_preprocessing.py and results_processing are for gathering results of runs 
