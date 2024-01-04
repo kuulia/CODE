@@ -121,21 +121,21 @@ def main():
         fig, ax = plt.subplots()
         data = pd.read_csv(f'data/KRR_output/maccs only/results/mean_MACCS_{target}.csv')
         ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
-        for folder in folders[0:4]:
+        for folder in folders[0:5]:
             filepath = path.relpath(f'data/KRR_output/{folder}/results')
             input_file = path.join(filepath,\
                                 f'mean_MACCS_with_simpol_{target}.csv')
             data = pd.read_csv(input_file)
             ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
         legends = ['MACCS fingerprint', 'SIMPOL fingerprint', 'MACCS & SIMPOL (1)', \
-                'MACCS & SIMPOL (2)', 'MACCS & SIMPOL (3)']
+                'MACCS & SIMPOL (2)', 'MACCS & SIMPOL (3)', 'MACCS & SIMPOL (4)']
         ax.legend(legends)  
         ax.set_xlabel('Train Size', fontsize=18)
         ax.set_ylabel('MAE', fontsize=18)
         plt.title('Learning Curve', fontsize=18)
         plt.close()
         outpath = path.relpath(f'data/plots/final')
-        fig.savefig(f'{outpath}/plot_learn_curves_1-4_with_simpol_{target}.png')
+        fig.savefig(f'{outpath}/plot_learn_curves_1-5_with_simpol_{target}.png')
     for target in targets:
         # Plot learning curve       
         fig, ax = plt.subplots()
