@@ -1,5 +1,6 @@
 #Author: Linus Lind Jan. 2024
 #GNU General Public License v3.0
+#calculates MAE, MSE and STD of data set 
 import pandas as pd
 import numpy as np
 import math

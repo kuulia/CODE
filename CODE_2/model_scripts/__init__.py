@@ -7,5 +7,4 @@ __all__ = ['generate_cm_edited', 'generate_MACCS_edited',
            'geckoq_modify_MACCS_with_simpol_1', 'geckoq_modify_MACCS_with_simpol_2',
            'geckoq_modify_MACCS_with_simpol_3', 'geckoq_modify_MACCS_with_simpol_4',
            'geckoq_modify_MACCS_with_simpol_6',
-           'geckoq_generate_MACCS_all', 'krr_edited_geckoq', 
            'krr_edited_geckoq_triton', 'krr_edited_triton']
