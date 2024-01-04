@@ -17,4 +17,4 @@ case $SLURM_ARRAY_TASK_ID in
    4)  SEED=452 ;;
 esac
 
-srun python run_main_triton_topfp.py $SEED TopFP log_p_sat
+srun python run_main_triton_topfp.py $SEED TopFP kwg
