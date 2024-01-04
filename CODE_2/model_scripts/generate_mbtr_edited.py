@@ -4,7 +4,7 @@ def main():
 	if (sys.version_info[0] == 3 and sys.version_info[1]!=8):
 		print(f'####\nPlease run this script with Python 3.8 interpreter and use dscribe 1.2.2. Your python version is {sys.version}\n####')
 	else:
-		# Run this with python 3.8 and dscribe 1.2.2!!!!!!!!!!!!
+		# Run this with python 3.8 and dscribe 1.2.2
 		from dscribe.descriptors import MBTR
 		from ase.io import read
 		import numpy as np
