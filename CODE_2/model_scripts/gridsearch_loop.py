@@ -1,3 +1,4 @@
+#Author: Emma Lumiaro as part of Lumiaro et al. (2021) https://doi.org/10.5194/acp-21-13227-2021
 import time
 start = time.time()
 from sklearn.model_selection import train_test_split

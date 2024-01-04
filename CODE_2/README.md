@@ -1,4 +1,5 @@
-# Last edited 15 OCT 2023
+# THIS PROJECT IS LICENSED UNDER Creative Commons Attribution-ShareAlike 4.0 International, SEE LICENSE FILE FOR DETAILS
+# Last edited 05 JAN 2023
 # Author: Linus Lind
 # This project is a part of a Bachelor's thesis 'Feature engineering for machine learning predictions in atmospheric science' and is based on the previous work of Lumiaro et al. (2021) https://doi.org/10.5194/acp-21-13227-2021 and parts of the source code are used from the publication. 
 # Data for this project is originally sourced from Wang et al. (2017) https://doi.org/10.5194/acp-17-7529-2017

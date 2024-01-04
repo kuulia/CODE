@@ -1,7 +1,0 @@
-Benchmarks for TopFP
-#######################
-The runtime of generating TopFP was: 14 ms 
-The runtime of the original lumiaro code for TopFP was: 543 ms 
-The runtime of the improved code for TopFP was: 0 ms 
-#######################
-

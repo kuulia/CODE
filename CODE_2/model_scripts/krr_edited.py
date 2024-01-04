@@ -1,3 +1,9 @@
+#Author: Emma Lumiaro as part of Lumiaro et al. (2021) https://doi.org/10.5194/acp-21-13227-2021
+#Edited by Linus Lind Jan. 2024 as part of a Bachelor's thesis. Changes include
+#but not limited to:
+#filepath organization, code refactoring
+#LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
+#
 import numpy as np
 import sklearn
 import matplotlib.pyplot as plt
@@ -8,8 +14,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_error
-
-############################### Parameters for training ##########################################################################
 
 # input files for training (change these to appropriate)
 def main(descriptor, target, *, iter=None):

@@ -1,3 +1,6 @@
+#Author: Linus Lind Jan. 2024
+#LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
+#Used for calculations on Triton computer cluster on GeckoQ data set
 from time import perf_counter_ns
 from os import path
 from os import getcwd

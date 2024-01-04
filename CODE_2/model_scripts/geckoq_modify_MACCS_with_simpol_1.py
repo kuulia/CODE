@@ -1,3 +1,6 @@
+#Author: Linus Lind Jan. 2024
+#LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
+#Modifies MACCS fingerprint to create MACCS & SIMPOL (1) descriptor
 import numpy as np
 import pandas as pd
 from os import path

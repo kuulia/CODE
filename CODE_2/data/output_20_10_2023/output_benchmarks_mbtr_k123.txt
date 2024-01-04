@@ -1,7 +1,0 @@
-Benchmarks for mbtr
-#######################
-The runtime of generating mbtr was: 24 ms 
-The runtime of the original lumiaro code for mbtr was: 1414 ms 
-The runtime of the improved code for mbtr was: 0 ms 
-#######################
-

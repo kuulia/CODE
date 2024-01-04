@@ -1,3 +1,5 @@
+#Author: Linus Lind Jan. 2024
+#LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
 #import this file
 from os import path
 import numpy as np

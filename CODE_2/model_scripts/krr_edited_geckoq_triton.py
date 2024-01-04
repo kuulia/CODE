@@ -1,3 +1,9 @@
+#Author: Emma Lumiaro as part of Lumiaro et al. (2021) https://doi.org/10.5194/acp-21-13227-2021
+#Edited by Linus Lind Jan. 2024 as part of a Bachelor's thesis. Changes include
+#but not limited to:
+#filepath organization, code refactoring
+#LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
+#used for geckoq data set runs
 import numpy as np
 import sklearn
 import matplotlib.pyplot as plt

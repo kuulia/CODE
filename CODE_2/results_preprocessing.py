@@ -1,3 +1,5 @@
+#Author: Linus Lind Jan. 2024
+#LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
