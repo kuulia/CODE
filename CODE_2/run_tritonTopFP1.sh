@@ -10,11 +10,11 @@ source activate CODE_2
 cd CODE/CODE_2
 
 case $SLURM_ARRAY_TASK_ID in
-   0)  SEED=121 ;;
-   1)  SEED=3254324351  ;;
-   2)  SEED=3261  ;;
-   3)  SEED=4361  ;;
-   4)  SEED=24351 ;;
+   0)  SEED=12 ;;
+   1)  SEED=325432435  ;;
+   2)  SEED=326  ;;
+   3)  SEED=436  ;;
+   4)  SEED=2435 ;;
 esac
 
 srun python run_main_triton_topfp.py $SEED TopFP log_p_sat

@@ -5,4 +5,4 @@
 from funs import *
 import pandas as pd
 import numpy as np
-summarizer('TopFP', 'kwiomg', 'lumiaro')
+summarizer('TopFP', 'log_p_sat', 'lumiaro')
