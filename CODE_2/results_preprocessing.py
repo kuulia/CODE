@@ -185,6 +185,22 @@ def main():
     fig.savefig(f'{outpath}/plot_geckoq_learn_curves_1-4_with_simpol_log_p_sat.png')
     # Plot learning curve       
     fig, ax = plt.subplots()
-
+    # predictions:
+    wang_data = pd.read_csv('data/wang_data.csv', index_col='SMILES')
+    targets = pd.DataFrame()
+    preds = pd.DataFrame()
+    for seed in random_state:
+        filepath = path.relpath(f'data/KRR_output/maccs and simpol final model')
+        input_file = path.join(filepath,\
+                f'output_predictions_MACCS_with_simpol_log_p_sat_{seed}.csv')
+        data = pd.read_csv(input_file)
+        preds[f'preds{seed}'] = data['predictions']
+        targets[f'targets{seed}'] = data['target_values']
+    for col in targets.columns:
+        vals = list(targets[col])
+        idx = []
+        for val in vals:
+            idx.append(wang_data.index[wang_data['log_p_sat'] == val].tolist())
+    print(idx)
 if __name__ == "__main__":
     main()

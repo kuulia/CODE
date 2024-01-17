@@ -4,6 +4,7 @@
 #filepath organization, code refactoring
 #LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
 #
+import pandas as pd
 import numpy as np
 import sklearn
 import matplotlib.pyplot as plt
@@ -16,9 +17,9 @@ from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_error
 
 # input files for training (change these to appropriate)
-def main(descriptor, target, *, iter=None):
+def main(descriptor, target, *, iter=None, save_predictions=False):
     if iter is None:
-        krr_regr(descriptor, target, 324)
+        krr_regr(descriptor, target, 324, save_predictions)
     else:
         if type(iter) is int:
             random_state = [12,432,5,7543,12343,452,325432435,326,436,2435]
@@ -26,23 +27,28 @@ def main(descriptor, target, *, iter=None):
                 if i == iter: break
                 else:
                     print(f'Running iteration {i+1} with random seed {state}')
-                    krr_regr(descriptor, target, state)
+                    krr_regr(descriptor, target, state, save_predictions)
 
         else: print('Give number of iterations as integer value 1-10')
 
-def krr_regr(descriptor, target, seed):
-    if (descriptor == 'cm' or descriptor == 'mbtr'): name_of_file = f'all_edited_{descriptor}.txt'
+def krr_regr(descriptor, target, seed, save_predictions):
+    if (descriptor == 'cm' or descriptor == 'mbtr'): 
+        name_of_file = f'all_edited_{descriptor}.txt'
     else: name_of_file = f'all_smiles_{descriptor}.txt'
 
     filepath = path.relpath("data")
-    descriptor_filename = path.join(filepath, name_of_file)  # file of descriptors of the molecules (MBTR, CM, MACCS, Morgan, Topological etc.)
-    target_property_filename = path.join(filepath, f'{target}.txt') # target property (p_vap, K_WIOMG, K_WG etc.)
+    # file of descriptors of the molecules (MBTR, CM, MACCS, Morgan, TopFP etc.)
+    descriptor_filename = path.join(filepath, name_of_file)
+    # target property (p_vap, K_WIOMG, K_WG etc.)
+    target_property_filename = path.join(filepath, f'{target}.txt') 
 
     # training sizes for producing learning curve (in increasing order)
-    train_sizes = [500, 1000, 1500, 2000, 2500, 3000]
+    #train_sizes = [500, 1000, 1500, 2000, 2500, 3000]
+    train_sizes = [50, 100, 150, 200, 250, 300]
 
     # parameters 
-    kernel_used = 'rbf' # kernel used in KRR ('rbf'- Gaussian, 'laplacian'- Laplacian)
+    # kernel used in KRR ('rbf'- Gaussian, 'laplacian'- Laplacian)
+    kernel_used = 'rbf'
     test_size = 414 # size of test set 
     random_seed = seed 
     cv = 5 # number of folds for KRR crossvalidation
@@ -52,7 +58,7 @@ def krr_regr(descriptor, target, seed):
     gamma = np.logspace(-10,-1,10)
 
 
-    ##################################################################################################################################
+    ############################################################################
 
 
 
@@ -60,7 +66,18 @@ def krr_regr(descriptor, target, seed):
     y_data = np.genfromtxt(target_property_filename)
 
     # obtaining test set
-    X, X_test, y, y_test = train_test_split(X_data, y_data, train_size=len(X_data)- test_size, test_size=test_size, shuffle=True, random_state=random_seed)
+    X, X_test, y, y_test = \
+        train_test_split(X_data, y_data, train_size=len(X_data)- test_size, \
+                         test_size=test_size, shuffle=True, \
+                         random_state=random_seed)
+    
+    # obtaining labels i.e. SMILES strings corresponding to test set
+    labs = pd.read_csv(f'{filepath}/all_smiles.txt', header=None)
+    labs.columns = ['SMILES']
+    _, X_test_lab, _, _ = \
+    train_test_split(labs['SMILES'].values, y_data, train_size=len(X_data)- test_size, \
+                        test_size=test_size, shuffle=True, \
+                        random_state=random_seed)
 
     learning_curve_mae = []
     training_sets = []
@@ -69,7 +86,9 @@ def krr_regr(descriptor, target, seed):
     # obtaining training set so that smaller set is a subset of a larger one
     for train_size in reversed(train_sizes):
         if train_size < len(X):
-            X_train, _, y_train, _ = train_test_split(X, y, train_size= train_size, test_size=1, shuffle=True, random_state=random_seed)
+            X_train, _, y_train, _ = \
+                train_test_split(X, y, train_size= train_size, test_size=1, \
+                                 shuffle=True, random_state=random_seed)
             X = X_train
             y = y_train
         else:
@@ -81,18 +100,21 @@ def krr_regr(descriptor, target, seed):
 
 
     # initializing outputfile and writing parameters in it
-    outputfile = open(f'data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt', 'w+')
+    path_out = f'data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt'
+    outputfile = open(path_out, 'w+')
     outputfile.write("Begin KRR training.... \n\n")
-
     outputfile.write("Training_sizes: " + str(train_sizes) + "\n\n")
-
     outputfile.write("Other parameters: \n")
     outputfile.write("Kernel used: " + kernel_used + '\n')
     outputfile.write("Test size: " + str(test_size) + '\n')
     outputfile.write("Random seed: " + str(random_seed) + '\n')
-
     outputfile.close()
+    if save_predictions:
+        filename_preds = \
+        f'data/KRR_output/output_predictions_{descriptor}_{target}_{seed}.csv'
 
+        outputfile_preds = open(filename_preds, 'w+')
+        outputfile_preds.close()
 
     # starting loop for all training sizes
     for train_id in range(len(train_sizes)):
@@ -101,20 +123,26 @@ def krr_regr(descriptor, target, seed):
         X_train, y_train = training_sets[train_id]
 
 
-        ################################ training the model #########################################################################
+        ########################## training the model ##########################
 
 
-        tuned_parameters = [{'kernel':[kernel_used],'alpha': alpha, 'gamma': gamma}]
+        tuned_parameters = [{'kernel':[kernel_used],\
+                             'alpha': alpha, \
+                             'gamma': gamma}]
 
-        # inializing grid search for crossvalidating optimal combination of hyperparameters
-        grid_search = GridSearchCV(KernelRidge(), tuned_parameters, cv=cv, scoring='neg_mean_absolute_error', n_jobs=-1, verbose=1)
+        # inializing grid search for crossvalidating optimal combination of 
+        # hyperparameters
+        grid_search = GridSearchCV(KernelRidge(), \
+                                   tuned_parameters, cv=cv, \
+                                   scoring='neg_mean_absolute_error', \
+                                   n_jobs=-1, verbose=1)
 
         # fitting the model
         grid_search.fit(X_train, y_train)
 
-        ################################################################################################################################
+        ########################################################################
 
-        ############################### train predictions and errors ###################################################################
+        ##################### train predictions and errors #####################
 
         # Prediction for training set
         y_pred_train = grid_search.predict(X_train)
@@ -128,9 +156,9 @@ def krr_regr(descriptor, target, seed):
         #R2
         r2_train = r2_score(y_train, y_pred_train)
 
-        ################################################################################################################################
+        ########################################################################
 
-        ################################## test predictions and errors #################################################################
+        ###################### test predictions and errors #####################
 
         # Prediction for test set
         y_pred = grid_search.predict(X_test)
@@ -145,14 +173,14 @@ def krr_regr(descriptor, target, seed):
         #R2
         r2 = r2_score(y_test, y_pred)
 
-        ################################################################################################################################
+        ########################################################################
 
 
         # Recording optimal parameters and errors in outputfile
         gamma_opt = grid_search.best_params_.get("gamma")
         alpha_opt = grid_search.best_params_.get("alpha")
 
-        outputfile = open(f'data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt', 'a+')
+        outputfile = open(path_out, 'a+')
 
         outputfile.write("\nTraining_size: " + str(train_size) + "\n\n")
 
@@ -169,11 +197,18 @@ def krr_regr(descriptor, target, seed):
         outputfile.write("Optimal parameters: \n")
         outputfile.write("Optimal alpha: " + str(alpha_opt) + '\n')
         outputfile.write("Optimal gamma: " +  str(gamma_opt) + '\n')
-        outputfile.write("Best gridsearch score with optimal parameters: " + str(grid_search.best_score_) + '\n\n')
+        outputfile.write("Best gridsearch score with optimal parameters: "\
+                          + str(grid_search.best_score_) + '\n\n')
 
         outputfile.close()
-
-
+    # save predictions for largest training size if needed:
+    if save_predictions:
+        df = pd.DataFrame()
+        df.index = X_test_lab
+        df.index.name = 'SMILES'
+        df['predictions'] = y_pred
+        df['target_values'] = y_test
+        df.to_csv(filename_preds)
     # scatterplot for largest training size
     fig, ax = plt.subplots()
     ax.scatter(y_test, y_pred)
@@ -183,7 +218,6 @@ def krr_regr(descriptor, target, seed):
     ax.set_xlabel('Reference', fontsize=18)
     ax.set_ylabel('Predicted', fontsize=18)
     fig.savefig(f'data/plots/{descriptor}/plot_regr_{descriptor}_{target}_{seed}.png')
-
 
 
     # Plot learning curve 

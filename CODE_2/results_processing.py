@@ -25,6 +25,8 @@ def main():
             data['Train_sizes'] = data['Train_sizes'].apply(lambda x: int(x))
             data.to_latex(F'{filepath}/{target}.tex', index=False, \
                             float_format="%.4f")
+    
+    
 
 
 if __name__ == "__main__":

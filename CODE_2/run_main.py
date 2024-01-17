@@ -22,8 +22,8 @@ def main():
 
     # run precomputations before benchmarking, loading the models etc
     #descs = ['cm', 'mbtr', 'MACCS', 'Morgan', 'TopFP', 'MACCS_with_simpol']
-    targets = ['log_p_sat', 'kwiomg', 'kwg']
-
+    #targets = ['log_p_sat', 'kwiomg', 'kwg']
+    targets = ['log_p_sat']
     #generate_cm_edited.main(), 
     #generate_mbtr_edited.main()
     #generate_MACCS_edited.main()
@@ -42,11 +42,11 @@ def main():
     # run KRR model
     for target in targets:
         desc = 'MACCS_with_simpol'
-        iters = 10
+        iters = 1
 
         t_0_lumiaro = perf_counter_ns() # store the start time
 
-        krr_edited.main(desc, target, iter=iters)
+        krr_edited.main(desc, target, iter=iters, save_predictions=True)
 
         if (iters == 10): summarizer(desc, target, 'lumiaro')
         ###############
