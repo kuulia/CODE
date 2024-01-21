@@ -45,7 +45,44 @@ def main():
     wang_data['c'] = wang_data.apply(lambda x: log_psat_to_c(x['log_p_sat'], x['molar_mass'], temp_wang), axis=1)
     wang_data['volatility'] = wang_data.apply(lambda x: c_to_volatility_group(x['c']), axis=1)
     wang_data.to_csv(f'{filepath}/wang_data.csv', index=None)
-
-
+    ##############
+    wang_data = pd.read_csv(f'{filepath}/wang_data.csv', index_col='SMILES')
+    filepath_preds = path.relpath(f'data/KRR_output/maccs and simpol final model')
+    random_state = [12,432,5,7543,12343,452,325432435,326,436,2435]
+    pred_all = pd.DataFrame()
+    for seed in random_state:
+        filename_preds = f'output_predictions_MACCS_with_simpol_log_p_sat_{seed}.csv'
+        pred = pd.read_csv(f'{filepath_preds}/{filename_preds}', index_col='SMILES')
+        pred = pred.merge(wang_data,
+                          left_on=['SMILES','target_values'], 
+                          right_on = ['SMILES','log_p_sat'])
+        pred['c_pred'] = pred.apply(lambda x: log_psat_to_c(x['predictions'], x['molar_mass'], temp_wang), axis=1)
+        pred['volatility_pred'] = pred.apply(lambda x: c_to_volatility_group(x['c_pred']), axis=1)
+        pred.columns = ['log_p_sat_pred', 'target_value', 'molar_mass', 'log_p_sat', 'sat_mass_c',
+                         'volatility', 'sat_mass_c_pred', 'volatility_pred']
+        reordered = ['molar_mass', 'log_p_sat', 'target_value', 'log_p_sat_pred', 'sat_mass_c',
+                     'sat_mass_c_pred', 'volatility', 'volatility_pred']
+        pred = pred.reindex(reordered, axis=1)
+        pred_all = pd.concat([pred_all, pred], axis=0)
+    pred_all = pred_all.drop_duplicates()
+    pred_all = pred_all.sort_values(by=['sat_mass_c'])
+    pred_all.to_csv(f'{filepath}/predictions_lumiaro_log_p_sat.csv')
+    wrong_preds = pred_all.query('volatility != volatility_pred')
+    volatility_groups = ['ELVOC', 'LVOC', 'SVOC', 'IVOC', 'VOC']
+    for group in volatility_groups:
+        count_wrong_preds = len(wrong_preds[wrong_preds['volatility']==group])
+        count_total_preds = len(pred_all[pred_all['volatility']==group])
+        def div(x, y):
+            div = 0
+            if y != 0: div = x / y
+            return div
+        print(f'__________{group}__________\n', \
+              f'Wrong predictions: {count_wrong_preds}\n', \
+              f'Total predictions {count_total_preds}\n', \
+              f'fraction of wrong predictions {div(count_wrong_preds, count_total_preds)}\n',\
+              '__________________________________________\n')
+    wrong_preds.to_csv(f'{filepath}/wrong_predictions_lumiaro_log_p_sat.csv')
+    print(pred_all)
+    print(pred_all.query('log_p_sat != target_value'))
 if __name__ == "__main__":
     main()

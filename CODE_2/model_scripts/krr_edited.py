@@ -43,8 +43,8 @@ def krr_regr(descriptor, target, seed, save_predictions):
     target_property_filename = path.join(filepath, f'{target}.txt') 
 
     # training sizes for producing learning curve (in increasing order)
-    #train_sizes = [500, 1000, 1500, 2000, 2500, 3000]
-    train_sizes = [50, 100, 150, 200, 250, 300]
+    train_sizes = [500, 1000, 1500, 2000, 2500, 3000]
+    #train_sizes = [50, 100, 150, 200, 250, 300]
 
     # parameters 
     # kernel used in KRR ('rbf'- Gaussian, 'laplacian'- Laplacian)
