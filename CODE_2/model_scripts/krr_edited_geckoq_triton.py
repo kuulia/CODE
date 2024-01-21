@@ -5,6 +5,7 @@
 #LICENSED UNDER: Creative Commons Attribution-ShareAlike 4.0 International
 #used for geckoq data set runs
 import numpy as np
+import pandas as pd
 import sklearn
 import matplotlib.pyplot as plt
 import math
@@ -57,6 +58,13 @@ def krr_regr(descriptor, seed):
     learning_curve_mae = []
     training_sets = []
 
+    # obtaining labels i.e. SMILES strings corresponding to test set
+    labs = pd.read_csv(f'{filepath}/geckoq_smiles.txt', header=None)
+    labs.columns = ['SMILES']
+    _, X_test_lab, _, _ = \
+    train_test_split(labs['SMILES'].values, y_data, train_size=len(X_data)- test_size, \
+                        test_size=test_size, shuffle=True, \
+                        random_state=random_seed)
 
     # obtaining training set so that smaller set is a subset of a larger one
     for train_size in reversed(train_sizes):
@@ -69,8 +77,6 @@ def krr_regr(descriptor, seed):
             y_train = y
         training_sets.append([X_train,y_train])
     training_sets.reverse()
-
-
 
     # initializing outputfile and writing parameters in it
     outputfile = open(f'data/KRR_output/output_KRR_{descriptor}_{target}_{seed}.txt', 'w+')
@@ -85,6 +91,10 @@ def krr_regr(descriptor, seed):
 
     outputfile.close()
 
+    filename_preds = \
+    f'data/KRR_output/output_predictions_{descriptor}_{target}_{seed}.csv'
+    outputfile_preds = open(filename_preds, 'w+')
+    outputfile_preds.close()
 
     # starting loop for all training sizes
     for train_id in range(len(train_sizes)):
@@ -164,8 +174,12 @@ def krr_regr(descriptor, seed):
         outputfile.write("Best gridsearch score with optimal parameters: " + str(grid_search.best_score_) + '\n\n')
 
         outputfile.close()
-
-
+    df = pd.DataFrame()
+    df.index = X_test_lab
+    df.index.name = 'SMILES'
+    df['predictions'] = y_pred
+    df['target_values'] = y_test
+    df.to_csv(filename_preds)
     # scatterplot for largest training size
     fig, ax = plt.subplots()
     ax.scatter(y_test, y_pred)
