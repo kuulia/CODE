@@ -46,7 +46,7 @@ def main(seed, desc):
     t_0_lumiaro = perf_counter_ns() # store the start time
 
     krr_edited_geckoq_triton.main(desc, target, seed)
-    #if (iters == 10): summarizer(desc, target, 'geckoq')
+
     ###############
     #compute test error values
     ###############
