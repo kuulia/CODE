@@ -42,7 +42,7 @@ def c_to_volatility_group(c: float|int) -> str:
 def main():
     filepath = path.relpath(f'data')
     wang_data = pd.read_csv(f'{filepath}/all_smiles_molar_mass.csv')
-    temp_wang = 298.15 # K
+    temp_wang = 288.15 # K
     wang_data['c'] = wang_data.apply(lambda x: log_psat_to_c(x['log_p_sat'], x['molar_mass'], temp_wang), axis=1)
     wang_data['volatility'] = wang_data.apply(lambda x: c_to_volatility_group(x['c']), axis=1)
     wang_data.to_csv(f'{filepath}/wang_data.csv', index=None)
