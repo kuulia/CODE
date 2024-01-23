@@ -83,15 +83,15 @@ def main():
               f'fraction of wrong predictions {div(count_wrong_preds, count_total_preds)}\n',\
               '__________________________________________\n')
     wrong_preds.to_csv(f'{filepath}/wrong_predictions_lumiaro_log_p_sat.csv')
-    print(pred_all)
-    print(pred_all.query('log_p_sat != target_value'))
-
+    pred_all = pred_all.groupby('SMILES').last()
     vol_donahue = np.log10(np.array([3 * 10**(-4), 0.3, 300, 3 * 10**(6)]) / 1_000_000)
 
     plt_pred  = np.log10(pred_all['sat_mass_c_pred'].values)
     plt_real = np.log10(pred_all['sat_mass_c'].values)
     fig, ax = plt.subplots()
     colors = ['purple', 'magenta', 'crimson', 'brown']
+    ax.fill_between(np.linspace(plt_real.min(), vol_donahue[0], num=100),
+                    np.ones(100) * 2* plt_real.min(), np.ones(100) * 2 *plt_real.max(), alpha=0.4, color='black')
     for i, vol in enumerate(vol_donahue[1:]):
         ax.plot(vol * np.ones(100), np.linspace(-15,10,num=100), color='black')
         ax.fill_between(np.linspace(vol_donahue[i], vol_donahue[i+1], num=100),
@@ -101,9 +101,9 @@ def main():
         #ax.plot(np.linspace(-10,5,num=100), vol * np.ones(100))
     ax.scatter(plt_real, plt_pred, s=1, color='navy')
     #ax.plot([plt_real.min()-5, plt_real.max()+5], [plt_real.min()-5, plt_real.max()+5], 'k--', lw=1)
-    ax.plot(np.linspace(-10, 10), np.linspace(-10, 10), 'k--', lw=1)
+    ax.plot(np.linspace(-15, 15), np.linspace(-15, 15), 'k--', lw=1)
     plt.ylim([plt_real.min()+0.1, plt_real.max()+2])
-    plt.xlim([vol_donahue[0], plt_real.max()+0.1])
+    plt.xlim([plt_real.min(), plt_real.max()+0.1])
     #plt.title('Predicted vs. True', fontsize=14)
     ax.set_xlabel('Reference $\log_{10}(C)$', fontsize=14)  
     ax.set_ylabel('Predicted $\log_{10}(C)$', fontsize=14)
