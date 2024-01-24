@@ -83,8 +83,6 @@ def main():
               f'fraction of wrong predictions {div(count_wrong_preds, count_total_preds)}\n',\
               '__________________________________________\n')
     wrong_preds.to_csv(f'{filepath}/wrong_predictions_lumiaro_log_p_sat.csv')
-    print(pred_all)
-    print(pred_all.query('log_p_sat != target_value'))
 
     vol_donahue = np.log10(np.array([3 * 10**(-4), 0.3, 300, 3 * 10**(6)]) / 1_000_000)
 
