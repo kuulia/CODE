@@ -90,29 +90,24 @@ def main():
 
     plt_pred  = np.log10(pred_all['sat_mass_c_pred'].values)
     plt_real = np.log10(pred_all['sat_mass_c'].values)
-    plt_wrong_pred = np.log10(wrong_preds['sat_mass_c_pred'].values)
-    plt_wrong_real = np.log10(wrong_preds['sat_mass_c'].values)
     fig, ax = plt.subplots()
     colors = ['purple', 'magenta', 'crimson', 'brown']
     for i, vol in enumerate(vol_donahue[1:]):
-        ax.plot(vol * np.ones(100), np.linspace(-10,10,num=100), 'k-', lw=0.5)
-        ax.plot(np.linspace(-10,10,num=100), vol * np.ones(100), 'k-', lw=0.5)
-        ax.fill_between(np.linspace(vol_donahue[i], vol_donahue[i+1], num=100),
-                    np.ones(100) * 2* plt_real.min(), np.ones(100) * 2 *plt_real.max(), alpha=0.4, color=colors[i])
+        ax.plot(vol * np.ones(100), np.linspace(-10,10,num=100), 'k--', lw=1)
+        ax.plot(np.linspace(-10,10,num=100), vol * np.ones(100), 'k--', lw=1)
+    ax.fill_between(np.linspace(plt_real.min()-2, plt_real.max()+2, num=100),
+            np.ones(100) * vol_donahue[0], np.ones(100) * vol_donahue[1], alpha=0.4, color=colors[0])
     ax.fill_between(np.linspace(vol_donahue[3], 2* plt_real.max(), num=100),
-        np.ones(100) * 2* plt_real.min(), np.ones(100) * 2 *plt_real.max(), alpha=0.4, color=colors[3])
+        np.ones(100) * vol_donahue[3], np.ones(100) * plt_real.max(), alpha=0.4, color=colors[3])
         #ax.plot(np.linspace(-10,5,num=100), vol * np.ones(100))
-    ax.scatter(plt_real, plt_pred, s=4, color='navy', label = 'Correctly predicted label')
-    ax.scatter(plt_wrong_real, plt_wrong_pred, s=4, color='darkred', label = 'Incorrectly predicted label')
-    fig.legend()
+    ax.scatter(plt_real, plt_pred, s=5, color='navy')
     #ax.plot([plt_real.min()-5, plt_real.max()+5], [plt_real.min()-5, plt_real.max()+5], 'k--', lw=1)
-    ax.plot(np.linspace(-10, 10), np.linspace(-10, 10), 'k--', lw=1)
-    plt.ylim([plt_real.min()+0.1, plt_real.max()+2])
+    ax.plot(np.linspace(-10, 10), np.linspace(-10, 10), 'k-', lw=1)
+    plt.ylim([plt_real.min()+0.1, plt_real.max()+0.1])
     plt.xlim([vol_donahue[0], plt_real.max()+0.1])
     #plt.title('Predicted vs. True', fontsize=14)
     ax.set_xlabel('Reference $\log_{10}(C)$', fontsize=14)  
     ax.set_ylabel('Predicted $\log_{10}(C)$', fontsize=14)
-    fig.legend()
     fig.savefig(f'data/plots/maccs_with_simpol/scatter_donahue_classes.png')
 
 if __name__ == "__main__":
