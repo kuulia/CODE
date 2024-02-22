@@ -62,7 +62,6 @@ def main():
     unused_keys_raw.loc[len(unused_keys_raw)] = 100 #Is there a methylene bridge directly connected to a nitrogen atom?  
     unused_keys_raw.loc[len(unused_keys_raw)] = 17 #Does the molecule have 2 triplebonded carbons?  
     unused_keys = unused_keys_raw['key']
-    print(unused_keys)
 
     #load simpol groups
     data_simpol_raw = pd.read_csv(path.join(filepath, \
@@ -78,7 +77,7 @@ def main():
     #print(groups)
 
     data_simpol = data_simpol_raw[groups]
-    #print(data_simpol)
+    print(data_simpol)
     
     #create simpol fingerprint
     simpol_fp = generate_simpol_fingerprint(data_simpol)
@@ -106,7 +105,7 @@ def main():
     all_simpol = all_simpol.join(oxygens)
     all_simpol = all_simpol.join(simpol_fp_four_plus)
     all_simpol.to_csv('data/all_smiles_simpol_fp.csv')
-    print(all_simpol)
+    #print(all_simpol)
     maccs_with_simpol = data
     for key, group in enumerate(groups):
         maccs_key_to_replace = unused_keys[key]
