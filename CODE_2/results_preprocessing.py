@@ -123,15 +123,23 @@ def main():
         fig, ax = plt.subplots()
         data = pd.read_csv(f'data/KRR_output/maccs only/results/mean_MACCS_{target}.csv')
         ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
+        min_val = 1
+        max_val = 0
         for folder in folders[0:5]:
             filepath = path.relpath(f'data/KRR_output/{folder}/results')
             input_file = path.join(filepath,\
                                 f'mean_MACCS_with_simpol_{target}.csv')
             data = pd.read_csv(input_file)
             ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
-        legends = ['MACCS fingerprint', 'SIMPOL fingerprint', 'MACCS & SIMPOL (1)', \
-                'MACCS & SIMPOL (2)', 'MACCS & SIMPOL (3)', 'MACCS & SIMPOL (4)']
-        ax.legend(legends)  
+            max_val = max(np.max(data['Test_MAE'].values), max_val)
+            min_val = min(np.min(data['Test_MAE'].values), min_val)
+        min_val -= 0.05
+        max_val += 0.1
+        plt.grid(True, axis='y', linestyle='--')
+        legends = ['MACCS only', 'BESPE (6) only', 'BESPE-MACCS (1)', \
+                'BESPE-MACCS (2)', 'BESPE-MACCS (3)', 'BESPE-MACCS (4)']
+        ax.legend(legends)
+        plt.ylim([min_val, max_val])
         ax.set_xlabel('Train Size', fontsize=18)
         ax.set_ylabel('MAE', fontsize=18)
         plt.title('Learning Curve', fontsize=18)
@@ -147,7 +155,7 @@ def main():
                                 f'mean_MACCS_with_simpol_{target}.csv')
             data = pd.read_csv(input_file)
             ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
-        legends = ['MACCS & SIMPOL (4)', 'MACCS & SIMPOL (5)', 'MACCS & SIMPOL (6)']
+        legends = ['BESPE-MACCS (4)', 'BESPE-MACCS (5)', 'BESPE-MACCS (6)']
         ax.legend(legends)  
         ax.set_xlabel('Train Size', fontsize=18)
         ax.set_ylabel('MAE', fontsize=18)
@@ -161,24 +169,30 @@ def main():
         folders_geckoq = [
             'simpol with encodings',\
             'maccs and simpol with multiple groups and carbon numbers', \
-            'maccs and norings simpol with binary encodings', \
-            'maccs and norings simpol with binary encodings and four plus groups', \
-            'maccs and simpol final model']
+            'maccs and norings simpol with binary encodings']
     # Plot learning curve       
     fig, ax = plt.subplots()
     data = pd.read_csv(f'data/KRR_output/maccs only/results/mean_MACCS_geckoq_log_p_sat.csv')
     ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
+    min_val = 1
+    max_val = 0
     for folder in folders_geckoq:
         filepath = path.relpath(f'data/KRR_output/{folder}/results')
         input_file = path.join(filepath,\
                             f'mean_MACCS_with_simpol_geckoq_log_p_sat.csv')
         data = pd.read_csv(input_file)
         ax.plot(data['Train_sizes'], data['Test_MAE'], marker='o')
-    legends = ['MACCS fingerprint', 'SIMPOL fingerprint', 'MACCS & SIMPOL (3)',
-            'MACCS & SIMPOL (4)', 'MACCS & SIMPOL (5)', 'MACCS & SIMPOL (6)']
+        max_val = max(np.max(data['Test_MAE'].values), max_val)
+        min_val = min(np.min(data['Test_MAE'].values), min_val)
+    min_val -= 0.1
+    max_val += 0.45
+    legends = ['MACCS only', 'BESPE (6) only', 'BESPE-MACCS (3)',
+            'BESPE-MACCS (4)']
     ax.legend(legends)  
     ax.set_xlabel('Train Size', fontsize=18)
     ax.set_ylabel('MAE', fontsize=18)
+    plt.grid(True, axis='y', linestyle='--')
+    plt.ylim([min_val, max_val])
     plt.title('Learning Curve', fontsize=18)
     plt.close()
     outpath = path.relpath(f'data/plots/final')

@@ -6,7 +6,11 @@ from funs import *
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv('data/mins_and_maxes.csv', index_col='Compound')
-data = data[['Counts', 'Min', 'Max', 'Mean', 'Weighted_mean']]
-print(data)
-data.to_latex('data/mins_and_maxes.tex', float_format="%.3f")
+data = pd.read_csv('SIMPOLgroups.csv')
+#print(data)
+
+out = pd.DataFrame()
+out.insert(0, 'Pattern name', data['substructure'])
+out.insert(1,'SMARTS pattern', data['pattern'])
+
+out.to_latex('SMARTSpatts.tex', index=False)
